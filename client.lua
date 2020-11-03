@@ -1,5 +1,4 @@
 local PickerIsOpen = false
-local CurrentInteraction = nil
 
 local entityEnumerator = {
 	__gc = function(enum)
@@ -44,10 +43,6 @@ function IsPlayerNearCoords(coords, radius)
 	return GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, coords.x, coords.y, coords.z, true) <= radius
 end
 
-function IsPedUsingScenarioHash(ped, scenarioHash)
-	return Citizen.InvokeNative(0x34D6AC1157C8226C, ped, scenarioHash)
-end
-
 function HasCompatibleModel(entity, models)
 	local entityModel = GetEntityModel(entity)
 
@@ -76,9 +71,9 @@ function StartInteractionAtObject(interaction)
 	local z = interaction.z + objectCoords.z
 	local h = interaction.heading + objectHeading
 
-	TaskStartScenarioAtPosition(PlayerPedId(), GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
+	ClearPedTasksImmediately(PlayerPedId())
 
-	CurrentInteraction = interaction
+	TaskStartScenarioAtPosition(PlayerPedId(), GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
 end
 
 function IsCompatible(t)
@@ -90,10 +85,6 @@ function SortInteractionsByName(a, b)
 end
 
 function StartInteraction()
-	if IsPedUsingAnyScenario(PlayerPedId()) then
-		return false
-	end
-
 	local availableInteractions = {}
 
 	for _, interaction in ipairs(Config.Interactions) do
@@ -138,26 +129,22 @@ function StartInteraction()
 	end
 end
 
+function StopInteraction()
+	ClearPedTasks(PlayerPedId())
+end
+
 RegisterNUICallback('startInteraction', function(data, cb)
 	StartInteractionAtObject(data)
 	cb({})
 end)
 
-function StopInteraction()
-	ClearPedTasks(PlayerPedId())
-	CurrentInteraction = nil
-end
-
-function ToggleInteraction()
-	if CurrentInteraction then
-		StopInteraction()
-	else
-		StartInteraction()
-	end
-end
+RegisterNUICallback('stopInteraction', function(data, cb)
+	StopInteraction()
+	cb({})
+end)
 
 RegisterCommand('interact', function(source, args, raw)
-	ToggleInteraction()
+	StartInteraction()
 end, false)
 
 CreateThread(function()
@@ -165,7 +152,7 @@ CreateThread(function()
 		Wait(0)
 
 		if IsControlJustPressed(0, Config.InteractControl) then
-			ToggleInteraction()
+			StartInteraction()
 		end
 
 		if PickerIsOpen then

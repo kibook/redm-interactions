@@ -16,7 +16,15 @@ function setSelected() {
 function startInteraction() {
 	var interaction = document.querySelectorAll('#interaction-picker-list .interaction')[selectedIndex];
 
-	if (!interaction.hasAttribute('data-cancel')) {
+	if (interaction.hasAttribute('data-cancel')) {
+		fetch('https://' + GetParentResourceName() + '/stopInteraction', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: '{}'
+		});
+	} else {
 		fetch('https://' + GetParentResourceName() + '/startInteraction', {
 			method: 'POST',
 			headers: {
@@ -60,7 +68,7 @@ function showInteractionPicker(data) {
 
 	var div = document.createElement('div');
 	div.className = 'interaction';
-	div.innerHTML = 'Cancel';
+	div.innerHTML = 'End Interaction';
 	div.setAttribute('data-cancel', '');
 	list.appendChild(div);
 
