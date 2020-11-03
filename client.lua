@@ -49,14 +49,18 @@ function HasCompatibleModel(entity, models)
 
 	for _, model in ipairs(models) do
 		if entityModel  == GetHashKey(model) then
-			return true
+			return model
 		end
 	end
-	return false
+	return nil
 end
 
-function CanStartInteractionAtObject(interaction, object)
-	return IsPlayerNearCoords(GetEntityCoords(object), interaction.radius) and HasCompatibleModel(object, interaction.objects)
+function CanStartInteractionAtObject(interaction, object, objectCoords)
+	if not IsPlayerNearCoords(objectCoords, interaction.radius) then
+		return nil
+	end
+
+	return HasCompatibleModel(object, interaction.objects)
 end
 
 function StartInteractionAtObject(interaction)
@@ -82,22 +86,32 @@ function IsCompatible(t)
 end
 
 function SortInteractions(a, b)
-	local x1, y1, z2 = table.unpack(GetEntityCoords(PlayerPedId()))
-	local x2, y2, z2 = table.unpack(GetEntityCoords(a.object))
-	local x3, y3, z3 = table.unpack(GetEntityCoords(b.object))
-	local d1 = GetDistanceBetweenCoords(x1, y1, z1, x2, y2, z2, true)
-	local d2 = GetDistanceBetweenCoords(x1, y1, z1, x3, y3, z3, true)
-
-	return d1 == d2 and a.scenario < b.scenario or d1 < d2
+	if a.distance == b.distance then
+		if a.object == b.object then
+			return a.scenario < b.scenario
+		else
+			return a.object < b.object
+		end
+	else
+		return a.distance < b.distance
+	end
 end
 
 function StartInteraction()
+	local playerCoords = GetEntityCoords(PlayerPedId())
+
 	local availableInteractions = {}
 
 	for _, interaction in ipairs(Config.Interactions) do
 		if IsCompatible(interaction) then
 			for object in EnumerateObjects() do
-				if CanStartInteractionAtObject(interaction, object, objectCoords) then
+				local objectCoords = GetEntityCoords(object)
+
+				local modelName = CanStartInteractionAtObject(interaction, object, objectCoords)
+
+				if modelName then
+					local distance = GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, objectCoords.x, objectCoords.y, objectCoords.z, true)
+
 					for _, scenario in ipairs(interaction.scenarios) do
 						if IsCompatible(scenario) then
 							table.insert(availableInteractions, {
@@ -107,20 +121,20 @@ function StartInteraction()
 								heading = interaction.heading,
 								scenario = scenario.name,
 								object = object,
+								modelName = modelName,
+								distance = distance
 							})
 						end
 					end
 				end
 			end
 		end
+
 		Wait(0)
 	end
 
-	if #availableInteractions == 1 then
-		StartInteractionAtObject(availableInteractions[1])
-	elseif #availableInteractions > 0 then
+	if #availableInteractions > 0 then
 		table.sort(availableInteractions, SortInteractions)
-
 		SendNUIMessage({
 			type = 'showInteractionPicker',
 			interactions = json.encode(availableInteractions)

@@ -46,7 +46,7 @@ function startInteraction() {
 				z: parseFloat(interaction.getAttribute('data-z')),
 				heading: parseFloat(interaction.getAttribute('data-heading')),
 				scenario: interaction.getAttribute('data-scenario'),
-				object: parseInt(interaction.getAttribute('data-object')),
+				object: parseInt(interaction.getAttribute('data-object'))
 			})
 		});
 	}
@@ -68,7 +68,7 @@ function showInteractionPicker(data) {
 
 		var div = document.createElement('div');
 		div.className = 'interaction';
-		div.innerHTML = interaction.object.toString(16) + ' ' + interaction.scenario;
+		div.innerHTML = interaction.modelName + ': ' + interaction.scenario;
 
 		div.setAttribute('data-x', interaction.x);
 		div.setAttribute('data-y', interaction.y);

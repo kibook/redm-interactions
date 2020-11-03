@@ -154,6 +154,9 @@ GenericChairsAndBenches = {
 	'p_rockingchair03x',
 	'p_seatbench01x',
 	'p_windsorbench01x',
+	'p_windsorchair01x',
+	'p_windsorchair02x',
+	'p_windsorchair03x',
 	'p_woodbench02x',
 	's_bench01x'
 }
