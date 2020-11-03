@@ -1,4 +1,5 @@
 local PickerIsOpen = false
+local MarkedEntity = 0
 
 local entityEnumerator = {
 	__gc = function(enum)
@@ -117,20 +118,22 @@ function StartInteraction()
 			type = 'showInteractionPicker',
 			interactions = json.encode(availableInteractions)
 		})
-
 		PickerIsOpen = true
 	else
 		SendNUIMessage({
 			type = 'hideInteractionPicker'
 		})
-
-
+		SetMarkedEntity(0)
 		PickerIsOpen = false
 	end
 end
 
 function StopInteraction()
 	ClearPedTasks(PlayerPedId())
+end
+
+function SetMarkedEntity(entity)
+	MarkedEntity = entity
 end
 
 RegisterNUICallback('startInteraction', function(data, cb)
@@ -143,9 +146,29 @@ RegisterNUICallback('stopInteraction', function(data, cb)
 	cb({})
 end)
 
+RegisterNUICallback('setMarkedEntity', function(data, cb)
+	SetMarkedEntity(data.entity)
+	cb({})
+end)
+
 RegisterCommand('interact', function(source, args, raw)
 	StartInteraction()
 end, false)
+
+AddEventHandler('onResourceStop', function(resourceName)
+	if GetCurrentResourceName() == resourceName then
+		SetMarkedEntity(0)
+	end
+end)
+
+function DrawMarker(type, posX, posY, posZ, dirX, dirY, dirZ, rotX, rotY, rotZ, scaleX, scaleY, scaleZ, red, green, blue, alpha, bobUpAndDown, faceCamera, p19, rotate, textureDict, textureName, drawOnEnts)
+	Citizen.InvokeNative(0x2A32FAA57B937173, type, posX, posY, posZ, dirX, dirY, dirZ, rotX, rotY, rotZ, scaleX, scaleY, scaleZ, red, green, blue, alpha, bobUpAndDown, faceCamera, p19, rotate, textureDict, textureName, drawOnEnts)
+end
+
+function DrawMarkerForEntity(entity)
+	local x, y, z = table.unpack(GetEntityCoords(entity))
+	DrawMarker(Config.MarkerType, x, y, z, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 1.0, Config.MarkerColor[1], Config.MarkerColor[2], Config.MarkerColor[3], Config.MarkerColor[4], 0, 0, 2, 0, 0, 0, 0)
+end
 
 CreateThread(function()
 	while true do
@@ -172,14 +195,21 @@ CreateThread(function()
 				SendNUIMessage({
 					type = 'startInteraction'
 				})
+				SetMarkedEntity(0)
+				PickerIsOpen = false
 			end
 
 			if IsControlJustPressed(0, 0x308588E6) then
 				SendNUIMessage({
 					type = 'hideInteractionPicker'
 				})
+				SetMarkedEntity(0)
 				PickerIsOpen = false
 			end
+		end
+
+		if MarkedEntity ~= 0 then
+			DrawMarkerForEntity(MarkedEntity)
 		end
 	end
 end)

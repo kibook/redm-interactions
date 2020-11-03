@@ -3,6 +3,10 @@ Config = {}
 -- Control to start/stop interactions. Comment this out to disable the control.
 Config.InteractControl = 0x2EAB0795 -- E
 
+Config.MarkerType = 0x94FDAE17
+
+Config.MarkerColor = {254, 127, 156, 128}
+
 -- List of interactable types of objects.
 Config.Interactions = {
 	-- Pianos

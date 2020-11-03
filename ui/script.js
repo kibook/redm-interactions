@@ -11,6 +11,16 @@ function setSelected() {
 			interactions[i].className = 'interaction';
 		}
 	}
+
+	fetch('https://' + GetParentResourceName() + '/setMarkedEntity', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			entity: parseInt(interactions[selectedIndex].getAttribute('data-object'))
+		})
+	});
 }
 
 function startInteraction() {
