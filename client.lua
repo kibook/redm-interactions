@@ -81,8 +81,14 @@ function IsCompatible(t)
 	return not t.isCompatible or t.isCompatible()
 end
 
-function SortInteractionsByName(a, b)
-	return a.scenario < b.scenario
+function SortInteractions(a, b)
+	local x1, y1, z2 = table.unpack(GetEntityCoords(PlayerPedId()))
+	local x2, y2, z2 = table.unpack(GetEntityCoords(a.object))
+	local x3, y3, z3 = table.unpack(GetEntityCoords(b.object))
+	local d1 = GetDistanceBetweenCoords(x1, y1, z1, x2, y2, z2, true)
+	local d2 = GetDistanceBetweenCoords(x1, y1, z1, x3, y3, z3, true)
+
+	return d1 == d2 and a.scenario < b.scenario or d1 < d2
 end
 
 function StartInteraction()
@@ -107,12 +113,13 @@ function StartInteraction()
 				end
 			end
 		end
+		Wait(0)
 	end
 
 	if #availableInteractions == 1 then
 		StartInteractionAtObject(availableInteractions[1])
 	elseif #availableInteractions > 0 then
-		table.sort(availableInteractions, SortInteractionsByName)
+		table.sort(availableInteractions, SortInteractions)
 
 		SendNUIMessage({
 			type = 'showInteractionPicker',

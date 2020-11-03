@@ -61,10 +61,14 @@ function showInteractionPicker(data) {
 
 	list.innerHTML = '';
 
-	interactions.forEach(function(interaction) {
+	var max = interactions.length > 40 ? 40 : interactions.length;
+
+	for (var i = 0; i < max; ++i) {
+		var interaction = interactions[i];
+
 		var div = document.createElement('div');
 		div.className = 'interaction';
-		div.innerHTML = interaction.scenario;
+		div.innerHTML = interaction.object.toString(16) + ' ' + interaction.scenario;
 
 		div.setAttribute('data-x', interaction.x);
 		div.setAttribute('data-y', interaction.y);
@@ -74,7 +78,7 @@ function showInteractionPicker(data) {
 		div.setAttribute('data-object', interaction.object);
 
 		list.appendChild(div);
-	});
+	}
 
 	var div = document.createElement('div');
 	div.className = 'interaction';
@@ -82,7 +86,7 @@ function showInteractionPicker(data) {
 	div.setAttribute('data-cancel', '');
 	list.appendChild(div);
 
-	currentInteractions = interactions.length + 1;
+	currentInteractions = max + 1;
 	selectedIndex = 0;
 	setSelected();
 
