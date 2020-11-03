@@ -77,7 +77,7 @@ Config.Interactions = {
 		radius = 1.5,
 		scenarios = {
 			{name = 'GENERIC_SEAT_BENCH_SCENARIO'},
-			{name = 'GENERIC_SEAT_CHAIR_SCENARIO'},
+			{name = 'GENERIC_SEAT_CHAIR_SCENARIO', isCompatible = PlayerPedIsMale},
 			{name = 'GENERIC_SEAT_CHAIR_TABLE_SCENARIO'},
 			{name = 'MP_LOBBY_PROP_HUMAN_SEAT_BENCH_PORCH_DRINKING'},
 			{name = 'MP_LOBBY_PROP_HUMAN_SEAT_BENCH_PORCH_SMOKING'},

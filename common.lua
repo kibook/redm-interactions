@@ -31,6 +31,13 @@ function PlayerPedIsAdultFemale()
 end
 
 GenericChairsAndBenches = {
+	'mp005_s_posse_col_chair01x',
+	'mp005_s_posse_foldingchair_01x',
+	'mp005_s_posse_trad_chair01x',
+	'p_ambchair01x',
+	'p_ambchair02x',
+	'p_armchair01x',
+	'p_bistrochair01x',
 	'p_bench03x',
 	'p_bench06x',
 	'p_bench08bx',
