@@ -109,6 +109,7 @@ GenericChairsAndBenches = {
 	'p_chaircomfy18x',
 	'p_chaircomfy22x',
 	'p_chaircomfy23x',
+	'p_chairdoctor01x',
 	'p_chair_crate02x',
 	'p_chair_crate15x',
 	'p_chair_cs05x',

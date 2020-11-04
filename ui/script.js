@@ -12,13 +12,17 @@ function setSelected() {
 		}
 	}
 
-	fetch('https://' + GetParentResourceName() + '/setMarkedEntity', {
+	var interaction = interactions[selectedIndex];
+
+	var entity = parseInt(interaction.getAttribute('data-object'));
+
+	fetch('https://' + GetParentResourceName() + '/setInteractionMarker', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			entity: parseInt(interactions[selectedIndex].getAttribute('data-object'))
+			entity: entity
 		})
 	});
 }
