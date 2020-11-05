@@ -248,9 +248,7 @@ Config.Interactions = {
 			'p_bedindian02x'
 		},
 		radius = 2.0,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.0,
 		y = 0.0,
 		z = 0.5,
@@ -262,10 +260,9 @@ Config.Interactions = {
 			'p_cs_pro_bed_unmade',
 			'p_cs_bed20madex'
 		},
+		label = 'right',
 		radius = 2.0,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = -0.3,
 		y = -0.2,
 		z = 0.5,
@@ -277,10 +274,9 @@ Config.Interactions = {
 			'p_cs_pro_bed_unmade',
 			'p_cs_bed20madex'
 		},
+		label = 'left',
 		radius = 2.0,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.3,
 		y = -0.2,
 		z = 0.5,
@@ -294,9 +290,7 @@ Config.Interactions = {
 			'p_bedindian01x',
 		},
 		radius = 1.5,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.0,
 		y = 0.0,
 		z = 0.5,
@@ -307,9 +301,7 @@ Config.Interactions = {
 			'p_bed05x'
 		},
 		radius = 1.5,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.0,
 		y = -0.5,
 		z = 0.5,
@@ -320,15 +312,36 @@ Config.Interactions = {
 			'p_bed10x',
 			'p_bed12x',
 			'p_bed13x',
-			'p_bed20x',
 			'p_bed22x'
 		},
 		radius = 2.0,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.0,
 		y = -0.3,
+		z = 0.8,
+		heading = 180.0
+	},
+	{
+		objects = {
+			'p_bed20x'
+		},
+		label = 'right',
+		radius = 2.0,
+		scenarios = SleepingScenarios,
+		x = -0.3,
+		y = -0.2,
+		z = 0.8,
+		heading = 180.0
+	},
+	{
+		objects = {
+			'p_bed20x'
+		},
+		label = 'left',
+		radius = 2.0,
+		scenarios = SleepingScenarios,
+		x = 0.3,
+		y = -0.2,
 		z = 0.8,
 		heading = 180.0
 	},
@@ -337,9 +350,7 @@ Config.Interactions = {
 			'p_bedking02x'
 		},
 		radius = 2.0,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = -0.5,
 		y = 0.5,
 		z = 0.5,
@@ -350,9 +361,7 @@ Config.Interactions = {
 			'p_bedking02x'
 		},
 		radius = 2.0,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.5,
 		y = 0.5,
 		z = 0.5,
@@ -365,18 +374,13 @@ Config.Interactions = {
 			'p_re_bedrollopen01x',
 			's_bedrollfurlined01x',
 			's_bedrollopen01x',
+			'p_amb_mattress04x',
 			'p_mattress04x',
 			'p_mattress07x',
 			'p_mattresscombined01x'
 		},
 		radius = 1.5,
-		scenarios = {
-			{name = 'WORLD_HUMAN_SLEEP_GROUND_ARM'},
-			{name = 'WORLD_HUMAN_SLEEP_GROUND_PILLOW'},
-			{name = 'WORLD_HUMAN_SLEEP_GROUND_PILLOW_NO_PILLOW'},
-			{name = 'WORLD_PLAYER_SLEEP_BEDROLL'},
-			{name = 'WORLD_PLAYER_SLEEP_GROUND'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.0,
 		y = 0.0,
 		z = 0.0,
@@ -389,9 +393,7 @@ Config.Interactions = {
 			'p_medbed01x'
 		},
 		radius = 2.0,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.1,
 		y = 0.0,
 		z = 0.85,
@@ -402,9 +404,7 @@ Config.Interactions = {
 			'p_cs_bedsleptinbed08x'
 		},
 		radius = 2.0,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.3,
 		y = -0.3,
 		z = 0.5,
@@ -415,9 +415,7 @@ Config.Interactions = {
 			'p_cs_bedsleptinbed08x'
 		},
 		radius = 2.0,
-		scenarios = {
-			{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'}
-		},
+		scenarios = SleepingScenarios,
 		x = 0.3,
 		y = 0.3,
 		z = 0.5,

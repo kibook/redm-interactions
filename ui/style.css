@@ -10,7 +10,7 @@ html, body {
 	padding: 0;
 	background: none;
 	font-family: "Chinese Rocks";
-	font-size: 1.25vw;
+	font-size: 1vw;
 }
 
 #interaction-picker {
@@ -27,7 +27,7 @@ html, body {
 	text-align: center;
 	padding: 0.5vh 0.5vw;
 	background: rgba(0, 0, 0, 0.75);
-	font-size: 1.5vw;
+	font-size: 1.25vw;
 }
 
 .interaction.selected {

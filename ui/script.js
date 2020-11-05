@@ -1,5 +1,6 @@
 var currentInteractions = 0;
 var selectedIndex = 0;
+var maxItems = 50;
 
 function setSelected() {
 	var interactions = document.querySelectorAll('#interaction-picker-list .interaction');
@@ -65,14 +66,19 @@ function showInteractionPicker(data) {
 
 	list.innerHTML = '';
 
-	var max = interactions.length > 40 ? 40 : interactions.length;
+	var max = interactions.length > maxItems ? maxItems : interactions.length;
 
 	for (var i = 0; i < max; ++i) {
 		var interaction = interactions[i];
 
 		var div = document.createElement('div');
 		div.className = 'interaction';
-		div.innerHTML = interaction.modelName + ': ' + interaction.scenario;
+
+		if (interaction.label) {
+			div.innerHTML = interaction.modelName + ': ' + interaction.scenario + ' (' + interaction.label + ')';
+		} else {
+			div.innerHTML = interaction.modelName + ': ' + interaction.scenario;
+		}
 
 		div.setAttribute('data-x', interaction.x);
 		div.setAttribute('data-y', interaction.y);

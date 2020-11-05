@@ -122,7 +122,8 @@ function StartInteraction()
 								scenario = scenario.name,
 								object = object,
 								modelName = modelName,
-								distance = distance
+								distance = distance,
+								label = interaction.label
 							})
 						end
 					end
