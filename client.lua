@@ -206,19 +206,73 @@ CreateThread(function()
 		end
 
 		if PickerIsOpen then
-			if IsControlJustPressed(0, 0x911CB09E) then
+			DisableControlAction(0, 0x0522B243, true)
+			DisableControlAction(0, 0x05CA7C52, true)
+			DisableControlAction(0, 0x0B1BE2E8, true)
+			DisableControlAction(0, 0x156F7119, true)
+			DisableControlAction(0, 0x21651AD6, true)
+			DisableControlAction(0, 0x24978A28, true)
+			DisableControlAction(0, 0x26A18F47, true)
+			DisableControlAction(0, 0x2CD5343E, true)
+			DisableControlAction(0, 0x3076E97C, true)
+			DisableControlAction(0, 0x308588E6, true)
+			DisableControlAction(0, 0x3B24C470, true)
+			DisableControlAction(0, 0x424BD2D2, true)
+			DisableControlAction(0, 0x43DBF61F, true)
+			DisableControlAction(0, 0x4403F97F, true)
+			DisableControlAction(0, 0x4E42696E, true)
+			DisableControlAction(0, 0x5181713D, true)
+			DisableControlAction(0, 0x5734A944, true)
+			DisableControlAction(0, 0x580C4473, true)
+			DisableControlAction(0, 0x5B48F938, true)
+			DisableControlAction(0, 0x6319DB71, true)
+			DisableControlAction(0, 0x6be9c207, true)
+			DisableControlAction(0, 0x6E9734E8, true)
+			DisableControlAction(0, 0x73A8FD83, true)
+			DisableControlAction(0, 0x760A9C6F, true)
+			DisableControlAction(0, 0x78114AB3, true)
+			DisableControlAction(0, 0x7914A3DD, true)
+			DisableControlAction(0, 0x7DBCD016, true)
+			DisableControlAction(0, 0x841240A9, true)
+			DisableControlAction(0, 0x84543902, true)
+			DisableControlAction(0, 0x8A7B8833, true)
+			DisableControlAction(0, 0x8CFFE0A1, true)
+			DisableControlAction(0, 0x8E90C7BB, true)
+			DisableControlAction(0, 0x8FFC75D6, true)
+			DisableControlAction(0, 0x911CB09E, true)
+			DisableControlAction(0, 0x9384E0A8, true)
+			DisableControlAction(0, 0xADEAF48C, true)
+			DisableControlAction(0, 0xAE69478F, true)
+			DisableControlAction(0, 0xB0BCE5D6, true)
+			DisableControlAction(0, 0xB28318C0, true)
+			DisableControlAction(0, 0xB2F377E8, true)
+			DisableControlAction(0, 0xBC2AE312, true)
+			DisableControlAction(0, 0xC5CF41B2, true)
+			DisableControlAction(0, 0xC67E13BB, true)
+			DisableControlAction(0, 0xC7B5340A, true)
+			DisableControlAction(0, 0xCDC4E4E9, true)
+			DisableControlAction(0, 0xCF8A4ECA, true)
+			DisableControlAction(0, 0xD2CC4644, true)
+			DisableControlAction(0, 0xD3ECF82F, true)
+			DisableControlAction(0, 0xD8F73058, true)
+			DisableControlAction(0, 0xD9C50532, true)
+			DisableControlAction(0, 0xE30CD707, true)
+			DisableControlAction(0, 0xE8342FF2, true)
+			DisableControlAction(0, 0xE9094BA0, true)
+
+			if IsDisabledControlJustPressed(0, 0x911CB09E) then
 				SendNUIMessage({
 					type = 'moveSelectionUp'
 				})
 			end
 
-			if IsControlJustPressed(0, 0x4403F97F) then
+			if IsDisabledControlJustPressed(0, 0x4403F97F) then
 				SendNUIMessage({
 					type = 'moveSelectionDown'
 				})
 			end
 
-			if IsControlJustPressed(0, 0x43DBF61F) then
+			if IsDisabledControlJustPressed(0, 0x43DBF61F) then
 				SendNUIMessage({
 					type = 'startInteraction'
 				})
@@ -226,7 +280,7 @@ CreateThread(function()
 				PickerIsOpen = false
 			end
 
-			if IsControlJustPressed(0, 0x308588E6) then
+			if IsDisabledControlJustPressed(0, 0x308588E6) then
 				SendNUIMessage({
 					type = 'hideInteractionPicker'
 				})
