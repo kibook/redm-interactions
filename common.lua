@@ -193,7 +193,7 @@ GenericChairsAndBenches = {
 
 SleepingScenarios = {
 	{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'},
-	{name = 'PROP_HUMAN_SLEEP_BED_PILLOW_HIGH'},
+	{name = 'PROP_HUMAN_SLEEP_BED_PILLOW_HIGH', isCompatible = PlayerPedIsMale},
 	{name = 'PROP_HUMAN_SLEEP_BED_PILLOW_LEFT'},
 	{name = 'PROP_HUMAN_SLEEP_BED_PILLOW_RIGHT'},
 	{name = 'WORLD_HUMAN_SLEEP_GROUND_ARM'},
