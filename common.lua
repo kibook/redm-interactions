@@ -227,7 +227,8 @@ GenericChairAndBenchScenarios = {
 	{name = 'PROP_HUMAN_SEAT_CHAIR_KNIFE_BADASS', isCompatible = PlayerPedIsMale},
 	{name = 'PROP_HUMAN_SEAT_CHAIR_KNITTING', isCompatible = PlayerPedIsFemale},
 	{name = 'PROP_HUMAN_SEAT_CHAIR_PORCH'},
-	{name = 'PROP_HUMAN_SEAT_CHAIR_READING', isCompatible = PlayerPedIsFemale}
+	{name = 'PROP_HUMAN_SEAT_CHAIR_READING', isCompatible = PlayerPedIsFemale},
+	{name = 'PROP_HUMAN_SEAT_CHAIR_TABLE_DRINKING'}
 }
 
 SleepingScenarios = {

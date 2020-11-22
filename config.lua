@@ -85,6 +85,44 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
+		isCompatible = PlayerPedIsAdult,
+		objects = GenericChairs,
+		radius = 1.5,
+		scenarios = {
+			{name = 'PROP_HUMAN_SEAT_CHAIR_DRINKING'}
+		},
+		x = 0.0,
+		y = 0.05,
+		z = -0.1,
+		heading = 180.0
+	},
+	{
+		isCompatible = PlayerPedIsAdult,
+		objects = GenericBenches,
+		radius = 1.5,
+		scenarios = {
+			{name = 'PROP_HUMAN_SEAT_CHAIR_DRINKING'}
+		},
+		label = 'left',
+		x = 0.4,
+		y = -0.05,
+		z = -0.1,
+		heading = 180.0
+	},
+	{
+		isCompatible = PlayerPedIsAdult,
+		objects = GenericBenches,
+		radius = 1.5,
+		scenarios = {
+			{name = 'PROP_HUMAN_SEAT_CHAIR_DRINKING'}
+		},
+		label = 'right',
+		x = -0.4,
+		y = -0.05,
+		z = -0.1,
+		heading = 180.0
+	},
+	{
 		isCompatible = PlayerPedIsMale,
 		objects = GenericChairs,
 		radius = 1.5,
@@ -193,7 +231,8 @@ Config.Interactions = {
 			'p_bed17x',
 			'p_bed21x',
 			'p_bedbunk03x',
-			'p_bedindian02x'
+			'p_bedindian02x',
+			'p_cot01x'
 		},
 		radius = 2.0,
 		scenarios = SleepingScenarios,
