@@ -78,6 +78,8 @@ function StartInteractionAtObject(interaction)
 
 	ClearPedTasksImmediately(PlayerPedId())
 
+	FreezeEntityPosition(PlayerPedId(), true)
+
 	TaskStartScenarioAtPosition(PlayerPedId(), GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
 end
 
@@ -152,6 +154,7 @@ end
 
 function StopInteraction()
 	ClearPedTasks(PlayerPedId())
+	FreezeEntityPosition(PlayerPedId(), false)
 end
 
 function SetInteractionMarker(entity)
