@@ -287,7 +287,7 @@ Config.Interactions = {
 		objects = {
 			'p_bed05x'
 		},
-		radius = 1.5,
+		radius = 2.0,
 		scenarios = SleepingScenarios,
 		x = 0.0,
 		y = -0.5,
