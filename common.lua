@@ -162,6 +162,7 @@ GenericChairs = {
 	'p_windsorchair02x',
 	'p_windsorchair03x',
 	'p_woodbench02x',
+	'p_woodendeskchair01x',
 	's_bench01x'
 }
 
