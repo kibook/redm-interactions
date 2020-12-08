@@ -158,6 +158,7 @@ GenericChairs = {
 	'p_stoolfolding01x',
 	'p_stoolwinter01x',
 	'o_stoolfoldingstatic01x',
+	'p_theaterchair01b01x',
 	'p_windsorchair01x',
 	'p_windsorchair02x',
 	'p_windsorchair03x',
