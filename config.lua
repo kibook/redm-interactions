@@ -336,6 +336,7 @@ Config.Interactions = {
 		objects = {
 			'p_bedking02x'
 		},
+		label = 'left',
 		radius = 2.0,
 		scenarios = SleepingScenarios,
 		x = -0.5,
@@ -347,6 +348,7 @@ Config.Interactions = {
 		objects = {
 			'p_bedking02x'
 		},
+		label = 'right',
 		radius = 2.0,
 		scenarios = SleepingScenarios,
 		x = 0.5,
