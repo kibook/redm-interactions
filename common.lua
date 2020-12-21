@@ -137,7 +137,6 @@ GenericChairs = {
 	'p_settee03x',
 	'p_settee03bx',
 	'p_settee04x',
-	'p_settee_05x',
 	'p_sit_chairwicker01b',
 	'p_stool01x',
 	'p_stool02x',
@@ -198,6 +197,7 @@ GenericBenches = {
 	'p_couchwicker01x',
 	'p_hallbench01x',
 	'p_loveseat01x',
+	'p_settee_05x',
 	'p_sit_chairwicker01a',
 	'p_windsorbench01x'
 }
