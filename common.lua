@@ -199,6 +199,7 @@ GenericBenches = {
 	'p_loveseat01x',
 	'p_settee_05x',
 	'p_sit_chairwicker01a',
+	'p_sofa02x',
 	'p_windsorbench01x'
 }
 
