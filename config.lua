@@ -167,6 +167,16 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
+		isCompatible = PlayerPedIsHuman,
+		objects = {'p_barstool01x'},
+		radius = 1.5,
+		scenarios = GenericChairAndBenchScenarios,
+		x = 0.0,
+		y = 0.0,
+		z = 0.8,
+		heading = 0.0
+	},
+	{
 		isCompatible = PlayerPedIsChild,
 		objects = GenericChairs,
 		radius = 1.5,
