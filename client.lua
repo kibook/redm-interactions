@@ -1,5 +1,6 @@
 local PickerIsOpen = false
 local InteractionMarker = 0
+local StartingCoords
 
 local entityEnumerator = {
 	__gc = function(enum)
@@ -76,11 +77,15 @@ function StartInteractionAtObject(interaction)
 	local z = interaction.z + objectCoords.z
 	local h = interaction.heading + objectHeading
 
-	ClearPedTasksImmediately(PlayerPedId())
+	local ped = PlayerPedId()
 
-	FreezeEntityPosition(PlayerPedId(), true)
+	StartingCoords = GetEntityCoords(ped)
 
-	TaskStartScenarioAtPosition(PlayerPedId(), GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
+	ClearPedTasksImmediately(ped)
+
+	FreezeEntityPosition(ped, true)
+
+	TaskStartScenarioAtPosition(ped, GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
 end
 
 function IsCompatible(t)
@@ -153,8 +158,16 @@ function StartInteraction()
 end
 
 function StopInteraction()
-	ClearPedTasks(PlayerPedId())
-	FreezeEntityPosition(PlayerPedId(), false)
+	local ped = PlayerPedId()
+
+	ClearPedTasksImmediately(ped)
+	FreezeEntityPosition(ped, false)
+
+	Wait(100)
+
+	if StartingCoords then
+		SetEntityCoordsNoOffset(ped, StartingCoords.x, StartingCoords.y, StartingCoords.z)
+	end
 end
 
 function SetInteractionMarker(entity)
