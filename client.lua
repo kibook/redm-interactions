@@ -42,7 +42,7 @@ end
 function IsPlayerNearCoords(coords, radius)
 	local playerCoords = GetEntityCoords(PlayerPedId())
 
-	return GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, coords.x, coords.y, coords.z, true) <= radius
+	return #(playerCoords - coords) <= radius
 end
 
 function HasCompatibleModel(entity, models)
@@ -117,7 +117,7 @@ function StartInteraction()
 				local modelName = CanStartInteractionAtObject(interaction, object, objectCoords)
 
 				if modelName then
-					local distance = GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, objectCoords.x, objectCoords.y, objectCoords.z, true)
+					local distance = #(playerCoords - objectCoords)
 
 					for _, scenario in ipairs(interaction.scenarios) do
 						if IsCompatible(scenario) then
