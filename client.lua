@@ -79,7 +79,9 @@ function StartInteractionAtObject(interaction)
 
 	local ped = PlayerPedId()
 
-	StartingCoords = GetEntityCoords(ped)
+	if not StartingCoords then
+		StartingCoords = GetEntityCoords(ped)
+	end
 
 	ClearPedTasksImmediately(ped)
 
@@ -167,6 +169,7 @@ function StopInteraction()
 
 	if StartingCoords then
 		SetEntityCoordsNoOffset(ped, StartingCoords.x, StartingCoords.y, StartingCoords.z)
+		StartingCoords = nil
 	end
 end
 
