@@ -2,6 +2,16 @@ var currentInteractions = 0;
 var selectedIndex = 0;
 var maxItems = 50;
 
+function sendMessage(name, data) {
+	return fetch(`https://${GetParentResourceName()}/${name}`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	});
+}
+
 function setSelected() {
 	var interactions = document.querySelectorAll('#interaction-picker-list .interaction');
 
@@ -15,45 +25,53 @@ function setSelected() {
 
 	var interaction = interactions[selectedIndex];
 
-	var entity = parseInt(interaction.getAttribute('data-object'));
+	if (interaction.hasAttribute('data-object')) {
+		var entity = parseInt(interaction.getAttribute('data-object'));
 
-	fetch('https://' + GetParentResourceName() + '/setInteractionMarker', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
+		sendMessage('setInteractionMarker', {
 			entity: entity
-		})
-	});
+		});
+	} else {
+		var x = parseFloat(interaction.getAttribute('data-x'));
+		var y = parseFloat(interaction.getAttribute('data-y'));
+		var z = parseFloat(interaction.getAttribute('data-z'));
+
+		sendMessage('setInteractionMarker', {
+			x: x,
+			y: y,
+			z: z
+		});
+	}
 }
 
 function startInteraction() {
 	var interaction = document.querySelectorAll('#interaction-picker-list .interaction')[selectedIndex];
 
 	if (interaction.hasAttribute('data-cancel')) {
-		fetch('https://' + GetParentResourceName() + '/stopInteraction', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: '{}'
-		});
+		sendMessage('stopInteraction', {});
 	} else {
-		fetch('https://' + GetParentResourceName() + '/startInteraction', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
+		if (interaction.hasAttribute('data-scenario')) {
+			sendMessage('startInteraction', {
 				x: parseFloat(interaction.getAttribute('data-x')),
 				y: parseFloat(interaction.getAttribute('data-y')),
 				z: parseFloat(interaction.getAttribute('data-z')),
 				heading: parseFloat(interaction.getAttribute('data-heading')),
 				scenario: interaction.getAttribute('data-scenario'),
 				object: parseInt(interaction.getAttribute('data-object'))
-			})
-		});
+			});
+		} else {
+			sendMessage('startInteraction', {
+				x: parseFloat(interaction.getAttribute('data-x')),
+				y: parseFloat(interaction.getAttribute('data-y')),
+				z: parseFloat(interaction.getAttribute('data-z')),
+				heading: parseFloat(interaction.getAttribute('data-heading')),
+				animation: {
+					dict: interaction.getAttribute('data-animation-dict'),
+					name: interaction.getAttribute('data-animation-name')
+				},
+				object: parseInt(interaction.getAttribute('data-object'))
+			});
+		}
 	}
 
 	hideInteractionPicker();
@@ -74,18 +92,51 @@ function showInteractionPicker(data) {
 		var div = document.createElement('div');
 		div.className = 'interaction';
 
-		if (interaction.label) {
-			div.innerHTML = interaction.modelName + ': ' + interaction.scenario + ' (' + interaction.label + ')';
+		if (interaction.scenario) {
+			if (interaction.label) {
+				if (interaction.modelName) {
+					div.innerHTML = interaction.modelName + ': ' + interaction.scenario + ' (' + interaction.label + ')';
+				} else {
+					div.innerHTML = interaction.scenario + ' (' + interaction.label + ')';
+				}
+			} else {
+				if (interaction.modelName) {
+					div.innerHTML = interaction.modelName + ': ' + interaction.scenario;
+				} else {
+					div.innerHTML = interaction.scenario;
+				}
+			}
 		} else {
-			div.innerHTML = interaction.modelName + ': ' + interaction.scenario;
+			if (interaction.label) {
+				if (interaction.modelName) {
+					div.innerHTML = interaction.modelName + ': ' + interaction.animation.label + ' (' + interaction.label + ')';
+				} else {
+					div.innerHTML = interaction.animation.label + ' (' + interaction.label + ')';
+				}
+			} else {
+				if (interaction.modelName) {
+					div.innerHTML = interaction.modelName + ': ' + interaction.animation.label;
+				} else {
+					div.innerHTML = interaction.animation.label;
+				}
+			}
 		}
 
 		div.setAttribute('data-x', interaction.x);
 		div.setAttribute('data-y', interaction.y);
 		div.setAttribute('data-z', interaction.z);
 		div.setAttribute('data-heading', interaction.heading);
-		div.setAttribute('data-scenario', interaction.scenario);
-		div.setAttribute('data-object', interaction.object);
+
+		if (interaction.scenario) {
+			div.setAttribute('data-scenario', interaction.scenario);
+		} else {
+			div.setAttribute('data-animation-dict', interaction.animation.dict);
+			div.setAttribute('data-animation-name', interaction.animation.name);
+		}
+
+		if (interaction.object) {
+			div.setAttribute('data-object', interaction.object);
+		}
 
 		list.appendChild(div);
 	}

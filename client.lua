@@ -1,5 +1,5 @@
 local PickerIsOpen = false
-local InteractionMarker = 0
+local InteractionMarker
 local StartingCoords
 
 local entityEnumerator = {
@@ -64,6 +64,22 @@ function CanStartInteractionAtObject(interaction, object, objectCoords)
 	return HasCompatibleModel(object, interaction.objects)
 end
 
+function PlayAnimation(ped, anim)
+	if not DoesAnimDictExist(anim.dict) then
+		return
+	end
+
+	RequestAnimDict(anim.dict)
+
+	while not HasAnimDictLoaded(anim.dict) do
+		Wait(0)
+	end
+
+	TaskPlayAnim(ped, anim.dict, anim.name, 0.0, 0.0, -1, 1, 1.0, false, false, false, '', false)
+
+	RemoveAnimDict(anim.dict)
+end
+
 function StartInteractionAtObject(interaction)
 	local objectHeading = GetEntityHeading(interaction.object)
 	local objectCoords = GetEntityCoords(interaction.object)
@@ -87,7 +103,36 @@ function StartInteractionAtObject(interaction)
 
 	FreezeEntityPosition(ped, true)
 
-	TaskStartScenarioAtPosition(ped, GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
+	if interaction.scenario then
+		TaskStartScenarioAtPosition(ped, GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
+	elseif interaction.animation then
+		PlayAnimation(ped, interaction.animation)
+	end
+end
+
+function StartInteractionAtCoords(interaction)
+	local x = interaction.x
+	local y = interaction.y
+	local z = interaction.z
+	local h = interaction.heading
+
+	local ped = PlayerPedId()
+
+	if not StartingCoords then
+		StartingCoords = GetEntityCoords(ped)
+	end
+
+	ClearPedTasksImmediately(ped)
+
+	FreezeEntityPosition(ped, true)
+	SetEntityCoordsNoOffset(ped, x, y, z)
+	SetEntityHeading(ped, h)
+
+	if interaction.scenario then
+		TaskStartScenarioAtPosition(ped, GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
+	elseif interaction.animation then
+		PlayAnimation(ped, interaction.animation)
+	end
 end
 
 function IsCompatible(t)
@@ -97,12 +142,50 @@ end
 function SortInteractions(a, b)
 	if a.distance == b.distance then
 		if a.object == b.object then
-			return a.scenario < b.scenario
+			local aLabel = a.scenario or a.animation.label
+			local bLabel = b.scenario or b.animation.label
+			return aLabel < bLabel
 		else
 			return a.object < b.object
 		end
 	else
 		return a.distance < b.distance
+	end
+end
+
+function AddInteractions(availableInteractions, interaction, playerCoords, targetCoords, modelName, object)
+	local distance = #(playerCoords - targetCoords)
+
+	if interaction.scenarios then
+		for _, scenario in ipairs(interaction.scenarios) do
+			if IsCompatible(scenario) then
+				table.insert(availableInteractions, {
+					x = interaction.x,
+					y = interaction.y,
+					z = interaction.z,
+					heading = interaction.heading,
+					scenario = scenario.name,
+					object = object,
+					modelName = modelName,
+					distance = distance,
+					label = interaction.label
+				})
+			end
+		end
+	end
+
+	if interaction.animations then
+		for _, animation in ipairs(interaction.animations) do
+			table.insert(availableInteractions, {
+				x = interaction.x,
+				y = interaction.y,
+				z = interaction.z,
+				heading = interaction.heading,
+				animation = animation,
+				distance = distance,
+				label = interaction.label
+			})
+		end
 	end
 end
 
@@ -113,29 +196,21 @@ function StartInteraction()
 
 	for _, interaction in ipairs(Config.Interactions) do
 		if IsCompatible(interaction) then
-			for object in EnumerateObjects() do
-				local objectCoords = GetEntityCoords(object)
+			if interaction.objects then
+				for object in EnumerateObjects() do
+					local objectCoords = GetEntityCoords(object)
 
-				local modelName = CanStartInteractionAtObject(interaction, object, objectCoords)
+					local modelName = CanStartInteractionAtObject(interaction, object, objectCoords)
 
-				if modelName then
-					local distance = #(playerCoords - objectCoords)
-
-					for _, scenario in ipairs(interaction.scenarios) do
-						if IsCompatible(scenario) then
-							table.insert(availableInteractions, {
-								x = interaction.x,
-								y = interaction.y,
-								z = interaction.z,
-								heading = interaction.heading,
-								scenario = scenario.name,
-								object = object,
-								modelName = modelName,
-								distance = distance,
-								label = interaction.label
-							})
-						end
+					if modelName then
+						AddInteractions(availableInteractions, interaction, playerCoords, objectCoords, modelName, object)
 					end
+				end
+			else
+				local targetCoords = vector3(interaction.x, interaction.y, interaction.z)
+
+				if IsPlayerNearCoords(targetCoords, interaction.radius) then
+					AddInteractions(availableInteractions, interaction, playerCoords, targetCoords)
 				end
 			end
 		end
@@ -154,7 +229,7 @@ function StartInteraction()
 		SendNUIMessage({
 			type = 'hideInteractionPicker'
 		})
-		SetInteractionMarker(0)
+		SetInteractionMarker()
 		PickerIsOpen = false
 	end
 end
@@ -173,12 +248,16 @@ function StopInteraction()
 	end
 end
 
-function SetInteractionMarker(entity)
-	InteractionMarker = entity
+function SetInteractionMarker(target)
+	InteractionMarker = target
 end
 
 RegisterNUICallback('startInteraction', function(data, cb)
-	StartInteractionAtObject(data)
+	if data.object then
+		StartInteractionAtObject(data)
+	else
+		StartInteractionAtCoords(data)
+	end
 	cb({})
 end)
 
@@ -188,7 +267,13 @@ RegisterNUICallback('stopInteraction', function(data, cb)
 end)
 
 RegisterNUICallback('setInteractionMarker', function(data, cb)
-	SetInteractionMarker(data.entity)
+	if (data.entity) then
+		SetInteractionMarker(data.entity)
+	elseif data.x and data.y and data.z then
+		SetInteractionMarker(vector3(data.x, data.y, data.z))
+	else
+		SetInteractionMarker()
+	end
 	cb({})
 end)
 
@@ -198,7 +283,7 @@ end, false)
 
 AddEventHandler('onResourceStop', function(resourceName)
 	if GetCurrentResourceName() == resourceName then
-		SetInteractionMarker(0)
+		SetInteractionMarker()
 	end
 end)
 
@@ -207,11 +292,17 @@ function DrawMarker(type, posX, posY, posZ, dirX, dirY, dirZ, rotX, rotY, rotZ, 
 end
 
 function DrawInteractionMarker()
-	if InteractionMarker == 0 then
+	if not InteractionMarker then
 		return
 	end
 
-	local x, y, z = table.unpack(GetEntityCoords(InteractionMarker))
+	local x, y, z
+
+	if type(InteractionMarker) == 'number' then
+		x, y, z = table.unpack(GetEntityCoords(InteractionMarker))
+	else
+		x, y, z = table.unpack(InteractionMarker)
+	end
 
 	DrawMarker(Config.MarkerType, x, y, z, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 1.0, Config.MarkerColor[1], Config.MarkerColor[2], Config.MarkerColor[3], Config.MarkerColor[4], 0, 0, 2, 0, 0, 0, 0)
 end
@@ -243,7 +334,7 @@ CreateThread(function()
 				SendNUIMessage({
 					type = 'startInteraction'
 				})
-				SetInteractionMarker(0)
+				SetInteractionMarker()
 				PickerIsOpen = false
 			end
 
@@ -251,7 +342,7 @@ CreateThread(function()
 				SendNUIMessage({
 					type = 'hideInteractionPicker'
 				})
-				SetInteractionMarker(0)
+				SetInteractionMarker()
 				PickerIsOpen = false
 			end
 		end

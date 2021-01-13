@@ -419,5 +419,32 @@ Config.Interactions = {
 		y = 0.3,
 		z = 0.5,
 		heading = 270.0
+	},
+	-- Valentine bath
+	{
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = -317.01651,
+		y = 761.86,
+		z = 117.45099,
+		heading = 100.278
+	},
+	-- Saint Denis bath
+	{
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = 2629.4099,
+		y = -1223.7757,
+		z = 59.6699,
+		heading = 2.896
+	},
+	-- Strawberry bath
+	{
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = -1812.46838,
+		y = -373.23529,
+		z = 166.64999,
+		heading = 92.105
 	}
 }

@@ -246,3 +246,11 @@ SleepingScenarios = {
 	{name = 'WORLD_PLAYER_SLEEP_BEDROLL'},
 	{name = 'WORLD_PLAYER_SLEEP_GROUND'}
 }
+
+BathingAnimations = {
+	{label = 'Bath', dict = 'mini_games@bathing@regular@arthur', name = 'bathing_idle_02'},
+	{label = 'Bath: Scrub left arm', dict = 'mini_games@bathing@regular@arthur', name = 'left_arm_scrub_medium'},
+	{label = 'Bath: Scrub right arm', dict = 'mini_games@bathing@regular@arthur', name = 'right_arm_scrub_medium'},
+	{label = 'Bath: Scrub left leg', dict = 'mini_games@bathing@regular@arthur', name = 'left_leg_scrub_medium'},
+	{label = 'Bath: Scrub right leg', dict = 'mini_games@bathing@regular@arthur', name = 'right_leg_scrub_medium'}
+}
