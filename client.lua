@@ -106,6 +106,8 @@ function StartInteractionAtObject(interaction)
 	if interaction.scenario then
 		TaskStartScenarioAtPosition(ped, GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
 	elseif interaction.animation then
+		SetEntityCoordsNoOffset(ped, x, y, z)
+		SetEntityHeading(ped, h)
 		PlayAnimation(ped, interaction.animation)
 	end
 
@@ -191,6 +193,7 @@ function AddInteractions(availableInteractions, interaction, playerCoords, targe
 				z = interaction.z,
 				heading = interaction.heading,
 				animation = animation,
+				object = object,
 				distance = distance,
 				label = interaction.label,
 				effect = interaction.effect

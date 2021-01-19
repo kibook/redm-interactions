@@ -468,5 +468,18 @@ Config.Interactions = {
 		z = 44.496986,
 		heading = 154.996,
 		effect = 'clean'
+	},
+	{
+		objects = {
+			'p_bath03x'
+		},
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = -0.5,
+		y = 0.0,
+		z = 0.65,
+		heading = 270.0,
+		effect = 'clean'
 	}
+
 }
