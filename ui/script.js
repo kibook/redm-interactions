@@ -57,7 +57,8 @@ function startInteraction() {
 				z: parseFloat(interaction.getAttribute('data-z')),
 				heading: parseFloat(interaction.getAttribute('data-heading')),
 				scenario: interaction.getAttribute('data-scenario'),
-				object: parseInt(interaction.getAttribute('data-object'))
+				object: parseInt(interaction.getAttribute('data-object')),
+				effect: interaction.getAttribute('data-effect')
 			});
 		} else {
 			sendMessage('startInteraction', {
@@ -69,7 +70,8 @@ function startInteraction() {
 					dict: interaction.getAttribute('data-animation-dict'),
 					name: interaction.getAttribute('data-animation-name')
 				},
-				object: parseInt(interaction.getAttribute('data-object'))
+				object: parseInt(interaction.getAttribute('data-object')),
+				effect: interaction.getAttribute('data-effect')
 			});
 		}
 	}
@@ -136,6 +138,10 @@ function showInteractionPicker(data) {
 
 		if (interaction.object) {
 			div.setAttribute('data-object', interaction.object);
+		}
+
+		if (interaction.effect) {
+			div.setAttribute('data-effect', interaction.effect);
 		}
 
 		list.appendChild(div);

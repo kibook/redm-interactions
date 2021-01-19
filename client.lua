@@ -108,6 +108,10 @@ function StartInteractionAtObject(interaction)
 	elseif interaction.animation then
 		PlayAnimation(ped, interaction.animation)
 	end
+
+	if interaction.effect then
+		Config.Effects[interaction.effect]()
+	end
 end
 
 function StartInteractionAtCoords(interaction)
@@ -132,6 +136,10 @@ function StartInteractionAtCoords(interaction)
 		TaskStartScenarioAtPosition(ped, GetHashKey(interaction.scenario), x, y, z, h, -1, false, true)
 	elseif interaction.animation then
 		PlayAnimation(ped, interaction.animation)
+	end
+
+	if interaction.effect then
+		Config.Effects[interaction.effect]()
 	end
 end
 
@@ -168,7 +176,8 @@ function AddInteractions(availableInteractions, interaction, playerCoords, targe
 					object = object,
 					modelName = modelName,
 					distance = distance,
-					label = interaction.label
+					label = interaction.label,
+					effect = interaction.effect
 				})
 			end
 		end
@@ -183,7 +192,8 @@ function AddInteractions(availableInteractions, interaction, playerCoords, targe
 				heading = interaction.heading,
 				animation = animation,
 				distance = distance,
-				label = interaction.label
+				label = interaction.label,
+				effect = interaction.effect
 			})
 		end
 	end

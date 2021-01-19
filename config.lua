@@ -7,6 +7,15 @@ Config.MarkerType = 0x94FDAE17
 
 Config.MarkerColor = {254, 127, 156, 128}
 
+Config.Effects = {
+	['clean'] = function()
+		local ped = PlayerPedId()
+		ClearPedEnvDirt(ped)
+		ClearPedDamageDecalByZone(ped, 10, "ALL")
+		ClearPedBloodDamage(ped)
+	end
+}
+
 -- List of interactable types of objects.
 Config.Interactions = {
 	-- Pianos
@@ -427,7 +436,8 @@ Config.Interactions = {
 		x = -317.01651,
 		y = 761.86,
 		z = 117.45099,
-		heading = 100.278
+		heading = 100.278,
+		effect = 'clean'
 	},
 	-- Saint Denis bath
 	{
@@ -436,7 +446,8 @@ Config.Interactions = {
 		x = 2629.4099,
 		y = -1223.7757,
 		z = 59.6699,
-		heading = 2.896
+		heading = 2.896,
+		effect = 'clean'
 	},
 	-- Strawberry bath
 	{
@@ -445,6 +456,17 @@ Config.Interactions = {
 		x = -1812.46838,
 		y = -373.23529,
 		z = 166.64999,
-		heading = 92.105
+		heading = 92.105,
+		effect = 'clean'
+	},
+	-- Annesburg bath
+	{
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = 2952.804199,
+		y = 1335.031494,
+		z = 44.496986,
+		heading = 154.996,
+		effect = 'clean'
 	}
 }
