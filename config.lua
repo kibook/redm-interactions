@@ -469,6 +469,16 @@ Config.Interactions = {
 		heading = 154.996,
 		effect = 'clean'
 	},
+	-- Bronte mansion bath
+	{
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = 2365.649,
+		y = -1211.780,
+		z = 51.888,
+		heading = 3.0,
+		effect = 'clean'
+	},
 	{
 		objects = {
 			'p_bath03x'
