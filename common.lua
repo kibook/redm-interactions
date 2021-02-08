@@ -234,7 +234,7 @@ GenericChairAndBenchScenarios = {
 	{name = 'PROP_HUMAN_SEAT_CHAIR_TABLE_DRINKING'}
 }
 
-SleepingScenarios = {
+BedScenarios = {
 	{name = 'PROP_HUMAN_SLEEP_BED_PILLOW'},
 	{name = 'PROP_HUMAN_SLEEP_BED_PILLOW_HIGH', isCompatible = PlayerPedIsMale},
 	{name = 'WORLD_HUMAN_SLEEP_GROUND_ARM'},

@@ -254,7 +254,7 @@ Config.Interactions = {
 			'p_cot01x'
 		},
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.0,
 		y = 0.0,
 		z = 0.5,
@@ -268,7 +268,7 @@ Config.Interactions = {
 		},
 		label = 'right',
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = -0.3,
 		y = -0.2,
 		z = 0.5,
@@ -282,7 +282,7 @@ Config.Interactions = {
 		},
 		label = 'left',
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.3,
 		y = -0.2,
 		z = 0.5,
@@ -295,8 +295,8 @@ Config.Interactions = {
 			'p_bed09x',
 			'p_bedindian01x',
 		},
-		radius = 1.5,
-		scenarios = SleepingScenarios,
+		radius = 2.0,
+		scenarios = BedScenarios,
 		x = 0.0,
 		y = 0.0,
 		z = 0.5,
@@ -307,7 +307,7 @@ Config.Interactions = {
 			'p_bed05x'
 		},
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.0,
 		y = -0.5,
 		z = 0.5,
@@ -321,7 +321,7 @@ Config.Interactions = {
 			'p_bed22x'
 		},
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.0,
 		y = -0.3,
 		z = 0.8,
@@ -333,7 +333,7 @@ Config.Interactions = {
 		},
 		label = 'right',
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = -0.3,
 		y = -0.2,
 		z = 0.8,
@@ -345,7 +345,7 @@ Config.Interactions = {
 		},
 		label = 'left',
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.3,
 		y = -0.2,
 		z = 0.8,
@@ -357,7 +357,7 @@ Config.Interactions = {
 		},
 		label = 'left',
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = -0.5,
 		y = 0.5,
 		z = 0.5,
@@ -369,7 +369,7 @@ Config.Interactions = {
 		},
 		label = 'right',
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.5,
 		y = 0.5,
 		z = 0.5,
@@ -388,7 +388,7 @@ Config.Interactions = {
 			'p_mattresscombined01x'
 		},
 		radius = 1.5,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.0,
 		y = 0.0,
 		z = 0.0,
@@ -401,7 +401,7 @@ Config.Interactions = {
 			'p_medbed01x'
 		},
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.1,
 		y = 0.0,
 		z = 0.85,
@@ -411,8 +411,9 @@ Config.Interactions = {
 		objects = {
 			'p_cs_bedsleptinbed08x'
 		},
+		label = 'left',
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.3,
 		y = -0.3,
 		z = 0.5,
@@ -422,8 +423,9 @@ Config.Interactions = {
 		objects = {
 			'p_cs_bedsleptinbed08x'
 		},
+		label = 'right',
 		radius = 2.0,
-		scenarios = SleepingScenarios,
+		scenarios = BedScenarios,
 		x = 0.3,
 		y = 0.3,
 		z = 0.5,
@@ -491,5 +493,4 @@ Config.Interactions = {
 		heading = 270.0,
 		effect = 'clean'
 	}
-
 }
