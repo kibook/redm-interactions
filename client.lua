@@ -187,17 +187,20 @@ function AddInteractions(availableInteractions, interaction, playerCoords, targe
 
 	if interaction.animations then
 		for _, animation in ipairs(interaction.animations) do
-			table.insert(availableInteractions, {
-				x = interaction.x,
-				y = interaction.y,
-				z = interaction.z,
-				heading = interaction.heading,
-				animation = animation,
-				object = object,
-				distance = distance,
-				label = interaction.label,
-				effect = interaction.effect
-			})
+			if IsCompatible(animation) then
+				table.insert(availableInteractions, {
+					x = interaction.x,
+					y = interaction.y,
+					z = interaction.z,
+					heading = interaction.heading,
+					animation = animation,
+					object = object,
+					modelName = modelName,
+					distance = distance,
+					label = interaction.label,
+					effect = interaction.effect
+				})
+			end
 		end
 	end
 end
