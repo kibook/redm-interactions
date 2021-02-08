@@ -492,5 +492,435 @@ Config.Interactions = {
 		z = 0.65,
 		heading = 270.0,
 		effect = 'clean'
-	}
+	},
+	{
+		objects = {
+			'p_bed14x',
+			'p_bed17x',
+			'p_bed21x',
+			'p_bedbunk03x',
+			'p_bedindian02x',
+			'p_cot01x'
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = -0.05,
+		y = 0.0,
+		z = 1.5,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_bed14x',
+			'p_bed17x',
+			'p_bed21x',
+			'p_bedbunk03x',
+			'p_bedindian02x',
+			'p_cot01x'
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.0,
+		y = 0.0,
+		z = 1.5,
+		heading = 190.0
+	},
+	{
+		objects = {
+			'p_bedking02x'
+		},
+		label = 'left',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = -0.55,
+		y = 0.5,
+		z = 1.5,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_bedking02x'
+		},
+		label = 'right',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = 0.45,
+		y = 0.5,
+		z = 1.5,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_bedking02x'
+		},
+		label = 'left',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = -0.5,
+		y = 0.5,
+		z = 1.5,
+		heading = -170.0
+	},
+	{
+		objects = {
+			'p_bedking02x'
+		},
+		label = 'right',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.5,
+		y = 0.5,
+		z = 1.5,
+		heading = -170.0
+	},
+	{
+		objects = {
+			'p_cs_bedsleptinbed08x'
+		},
+		label = 'left',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.0,
+		y = -0.3,
+		z = 1.5,
+		heading = 280.0
+	},
+	{
+		objects = {
+			'p_cs_bedsleptinbed08x'
+		},
+		label = 'right',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.0,
+		y = 0.3,
+		z = 1.5,
+		heading = 280.0
+	},
+	{
+		objects = {
+			'p_cs_bedsleptinbed08x'
+		},
+		label = 'left',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = 0.0,
+		y = -0.3,
+		z = 1.5,
+		heading = 90.0
+	},
+	{
+		objects = {
+			'p_cs_bedsleptinbed08x'
+		},
+		label = 'right',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = 0.0,
+		y = 0.3,
+		z = 1.5,
+		heading = 90.0
+	},
+	{
+		objects = {
+			'p_bed20madex',
+			'p_cs_pro_bed_unmade',
+			'p_cs_bed20madex'
+		},
+		label = 'right',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = -0.3,
+		y = 0.0,
+		z = 1.5,
+		heading = 190.0
+	},
+	{
+		objects = {
+			'p_bed20madex',
+			'p_cs_pro_bed_unmade',
+			'p_cs_bed20madex'
+		},
+		label = 'left',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.3,
+		y = 0.0,
+		z = 1.5,
+		heading = 190.0
+	},
+	{
+		objects = {
+			'p_bed20madex',
+			'p_cs_pro_bed_unmade',
+			'p_cs_bed20madex'
+		},
+		label = 'right',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = -0.35,
+		y = 0.0,
+		z = 1.5,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_bed20madex',
+			'p_cs_pro_bed_unmade',
+			'p_cs_bed20madex'
+		},
+		label = 'left',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = 0.25,
+		y = 0.0,
+		z = 1.5,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_cs_ann_wrkr_bed01x',
+			'p_cs_roc_hse_bed',
+			'p_medbed01x'
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = 0.0,
+		y = 0.0,
+		z = 1.85,
+		heading = 90.0
+	},
+	{
+		objects = {
+			'p_cs_ann_wrkr_bed01x',
+			'p_cs_roc_hse_bed',
+			'p_medbed01x'
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.0,
+		y = 0.0,
+		z = 1.85,
+		heading = 280.0
+	},
+	{
+		objects = {
+			'p_bedrollopen01x',
+			'p_bedrollopen03x',
+			'p_re_bedrollopen01x',
+			's_bedrollfurlined01x',
+			's_bedrollopen01x',
+			'p_amb_mattress04x',
+			'p_mattress04x',
+			'p_mattress07x',
+			'p_mattresscombined01x'
+		},
+		radius = 1.5,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = -0.1,
+		y = 0.0,
+		z = 1.0,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_bedrollopen01x',
+			'p_bedrollopen03x',
+			'p_re_bedrollopen01x',
+			's_bedrollfurlined01x',
+			's_bedrollopen01x',
+			'p_amb_mattress04x',
+			'p_mattress04x',
+			'p_mattress07x',
+			'p_mattresscombined01x'
+		},
+		radius = 1.5,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.0,
+		y = 0.0,
+		z = 1.0,
+		heading = 190.0
+	},
+	{
+		objects = {
+			'p_bed10x',
+			'p_bed12x',
+			'p_bed13x',
+			'p_bed22x'
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.0,
+		y = 0.0,
+		z = 1.8,
+		heading = 190.0
+	},
+	{
+		objects = {
+			'p_bed10x',
+			'p_bed12x',
+			'p_bed13x',
+			'p_bed22x'
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = 0.0,
+		y = 0.0,
+		z = 1.8,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_bed20x'
+		},
+		label = 'right',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = -0.3,
+		y = 0.0,
+		z = 1.8,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_bed20x'
+		},
+		label = 'left',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = 0.3,
+		y = 0.0,
+		z = 1.8,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_bed20x'
+		},
+		label = 'right',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = -0.3,
+		y = 0.0,
+		z = 1.8,
+		heading = 190.0
+	},
+	{
+		objects = {
+			'p_bed20x'
+		},
+		label = 'left',
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.3,
+		y = 0.0,
+		z = 1.8,
+		heading = 190.0
+	},
+	{
+		objects = {
+			'p_ambbed01x',
+			'p_bed03x',
+			'p_bed09x',
+			'p_bedindian01x',
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.0,
+		y = 0.0,
+		z = 1.5,
+		heading = 280.0
+	},
+	{
+		objects = {
+			'p_ambbed01x',
+			'p_bed03x',
+			'p_bed09x',
+			'p_bedindian01x',
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = 0.0,
+		y = -0.03,
+		z = 1.5,
+		heading = 90.0
+	},
+	{
+		objects = {
+			'p_bed05x'
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+		},
+		x = -0.075,
+		y = -0.3,
+		z = 1.5,
+		heading = 0.0
+	},
+	{
+		objects = {
+			'p_bed05x'
+		},
+		radius = 2.0,
+		animations = {
+			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+		},
+		x = 0.0,
+		y = -0.3,
+		z = 1.5,
+		heading = 190.0
+	},
 }
