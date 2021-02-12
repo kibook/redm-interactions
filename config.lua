@@ -488,6 +488,16 @@ Config.Interactions = {
 		heading = 3.0,
 		effect = "clean"
 	},
+	-- Rhodes bath
+	{
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = 1336.350,
+		y = -1377.972,
+		z = 84.345,
+		heading = -96.693,
+		effect = "clean"
+	},
 	{
 		objects = {
 			"p_bath03x"
