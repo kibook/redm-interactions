@@ -506,7 +506,7 @@ Config.Interactions = {
 		y = -2972.139,
 		z = -0.75,
 		heading = 108.131,
-		effect = "Clean"
+		effect = "clean"
 	},
 	{
 		objects = {
