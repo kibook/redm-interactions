@@ -285,7 +285,7 @@ function IsPedUsingInteraction(ped, interaction)
 	if interaction.scenario then
 		return IsPedUsingScenarioHash(ped, GetHashKey(interaction.scenario))
 	elseif interaction.animation then
-		return IsEntityPlayingAnim(interaction.animation.dict, interaction.animation.name, 1)
+		return IsEntityPlayingAnim(ped, interaction.animation.dict, interaction.animation.name, 1)
 	else
 		return false
 	end
