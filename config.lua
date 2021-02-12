@@ -1,14 +1,21 @@
 Config = {}
 
 -- Control to start/stop interactions. Comment this out to disable the control.
-Config.InteractControl = 0x2EAB0795 -- E
+Config.InteractControl = `INPUT_DYNAMIC_SCENARIO` -- E
 
+-- Interaction picker menu controls
+Config.MenuUpControl = `INPUT_GAME_MENU_UP`
+Config.MenuDownControl = `INPUT_GAME_MENU_DOWN`
+Config.MenuAcceptControl = `INPUT_GAME_MENU_ACCEPT`
+Config.MenuCancelControl = `INPUT_GAME_MENU_CANCEL`
+
+-- Settings for the marker that appears on the currently selected object
 Config.MarkerType = 0x94FDAE17
-
 Config.MarkerColor = {254, 127, 156, 128}
 
+-- Effects that may be applied when interacting with objects
 Config.Effects = {
-	['clean'] = function()
+	["clean"] = function()
 		local ped = PlayerPedId()
 		ClearPedEnvDirt(ped)
 		ClearPedDamageDecalByZone(ped, 10, "ALL")
@@ -21,11 +28,11 @@ Config.Interactions = {
 	-- Pianos
 	{
 		isCompatible = PlayerPedIsHuman,
-		objects = {'p_piano03x'},
+		objects = {"p_piano03x"},
 		radius = 2.0,
 		scenarios = {
-			{name = 'PROP_HUMAN_PIANO', isCompatible = PlayerPedIsMale},
-			{name = 'PROP_HUMAN_ABIGAIL_PIANO', isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
 		},
 		x = 0.0,
 		y = -0.70,
@@ -34,11 +41,11 @@ Config.Interactions = {
 	},
 	{
 		isCompatible = PlayerPedIsHuman,
-		objects = {'p_piano02x'},
+		objects = {"p_piano02x"},
 		radius = 2.0,
 		scenarios = {
-			{name = 'PROP_HUMAN_PIANO', isCompatible = PlayerPedIsMale},
-			{name = 'PROP_HUMAN_ABIGAIL_PIANO', isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
 		},
 		x = 0.0,
 		y = -0.70,
@@ -47,11 +54,11 @@ Config.Interactions = {
 	},
 	{
 		isCompatible = PlayerPedIsHuman,
-		objects = {'p_nbxpiano01x'},
+		objects = {"p_nbxpiano01x"},
 		radius = 2.0,
 		scenarios = {
-			{name = 'PROP_HUMAN_PIANO', isCompatible = PlayerPedIsMale},
-			{name = 'PROP_HUMAN_ABIGAIL_PIANO', isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
 		},
 		x = -0.1,
 		y = -0.75,
@@ -60,11 +67,11 @@ Config.Interactions = {
 	},
 	{
 		isCompatible = PlayerPedIsHuman,
-		objects = {'p_nbmpiano01x'},
+		objects = {"p_nbmpiano01x"},
 		radius = 2.0,
 		scenarios = {
-			{name = 'PROP_HUMAN_PIANO', isCompatible = PlayerPedIsMale},
-			{name = 'PROP_HUMAN_ABIGAIL_PIANO', isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
 		},
 		x = 0.0,
 		y = -0.77,
@@ -72,11 +79,11 @@ Config.Interactions = {
 		heading = 0.0
 	},
 	{
-		objects = {'sha_man_piano01'},
+		objects = {"sha_man_piano01"},
 		radius = 2.0,
 		scenarios = {
-			{name = 'PROP_HUMAN_PIANO', isCompatible = PlayerPedIsMale},
-			{name = 'PROP_HUMAN_ABIGAIL_PIANO', isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
 		},
 		x = 0.0,
 		y = -0.75,
@@ -98,7 +105,7 @@ Config.Interactions = {
 		objects = GenericChairs,
 		radius = 1.5,
 		scenarios = {
-			{name = 'PROP_HUMAN_SEAT_CHAIR_DRINKING'}
+			{name = "PROP_HUMAN_SEAT_CHAIR_DRINKING"}
 		},
 		x = 0.0,
 		y = 0.05,
@@ -110,9 +117,9 @@ Config.Interactions = {
 		objects = GenericBenches,
 		radius = 1.5,
 		scenarios = {
-			{name = 'PROP_HUMAN_SEAT_CHAIR_DRINKING'}
+			{name = "PROP_HUMAN_SEAT_CHAIR_DRINKING"}
 		},
-		label = 'left',
+		label = "left",
 		x = 0.4,
 		y = -0.05,
 		z = -0.1,
@@ -123,9 +130,9 @@ Config.Interactions = {
 		objects = GenericBenches,
 		radius = 1.5,
 		scenarios = {
-			{name = 'PROP_HUMAN_SEAT_CHAIR_DRINKING'}
+			{name = "PROP_HUMAN_SEAT_CHAIR_DRINKING"}
 		},
-		label = 'right',
+		label = "right",
 		x = -0.4,
 		y = -0.05,
 		z = -0.1,
@@ -136,7 +143,7 @@ Config.Interactions = {
 		objects = GenericChairs,
 		radius = 1.5,
 		scenarios = {
-			{name = 'PROP_HUMAN_SEAT_BENCH_HARMONICA'}
+			{name = "PROP_HUMAN_SEAT_BENCH_HARMONICA"}
 		},
 		x = 0.0,
 		y = -0.3,
@@ -148,7 +155,7 @@ Config.Interactions = {
 		objects = GenericChairs,
 		radius = 1.5,
 		scenarios = {
-			{name = 'PROP_HUMAN_SEAT_CHAIR_FAN'}
+			{name = "PROP_HUMAN_SEAT_CHAIR_FAN"}
 		},
 		x = 0.0,
 		y = 0.0,
@@ -157,7 +164,7 @@ Config.Interactions = {
 	},
 	{
 		isCompatible = PlayerPedIsAdult,
-		objects = {'p_chairrusticsav01x'},
+		objects = {"p_chairrusticsav01x"},
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
 		x = 0.0,
@@ -167,7 +174,7 @@ Config.Interactions = {
 	},
 	{
 		isCompatible = PlayerPedIsAdult,
-		objects = {'p_chairtall01x'},
+		objects = {"p_chairtall01x"},
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
 		x = 0.0,
@@ -177,7 +184,7 @@ Config.Interactions = {
 	},
 	{
 		isCompatible = PlayerPedIsHuman,
-		objects = {'p_barstool01x'},
+		objects = {"p_barstool01x"},
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
 		x = 0.0,
@@ -198,7 +205,7 @@ Config.Interactions = {
 	{
 		isCompatible = PlayerPedIsHuman,
 		objects = GenericBenches,
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		scenarios = GenericChairAndBenchScenarios,
 		x = -0.5,
@@ -209,7 +216,7 @@ Config.Interactions = {
 	{
 		isCompatible = PlayerPedIsHuman,
 		objects = GenericBenches,
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		scenarios = GenericChairAndBenchScenarios,
 		x = 0.5,
@@ -220,10 +227,10 @@ Config.Interactions = {
 	{
 		isCompatible = PlayerPedIsHuman,
 		objects = {
-			'p_bench17x',
-			'p_benchbear01x'
+			"p_bench17x",
+			"p_benchbear01x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
 		x = -0.3,
@@ -233,10 +240,10 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bench17x',
-			'p_benchbear01x'
+			"p_bench17x",
+			"p_benchbear01x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
 		x = 0.3,
@@ -246,12 +253,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed14x',
-			'p_bed17x',
-			'p_bed21x',
-			'p_bedbunk03x',
-			'p_bedindian02x',
-			'p_cot01x'
+			"p_bed14x",
+			"p_bed17x",
+			"p_bed21x",
+			"p_bedbunk03x",
+			"p_bedindian02x",
+			"p_cot01x"
 		},
 		radius = 2.0,
 		scenarios = BedScenarios,
@@ -262,11 +269,11 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20madex',
-			'p_cs_pro_bed_unmade',
-			'p_cs_bed20madex'
+			"p_bed20madex",
+			"p_cs_pro_bed_unmade",
+			"p_cs_bed20madex"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		scenarios = BedScenarios,
 		x = -0.3,
@@ -276,11 +283,11 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20madex',
-			'p_cs_pro_bed_unmade',
-			'p_cs_bed20madex'
+			"p_bed20madex",
+			"p_cs_pro_bed_unmade",
+			"p_cs_bed20madex"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		scenarios = BedScenarios,
 		x = 0.3,
@@ -290,10 +297,10 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_ambbed01x',
-			'p_bed03x',
-			'p_bed09x',
-			'p_bedindian01x',
+			"p_ambbed01x",
+			"p_bed03x",
+			"p_bed09x",
+			"p_bedindian01x",
 		},
 		radius = 2.0,
 		scenarios = BedScenarios,
@@ -304,7 +311,7 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed05x'
+			"p_bed05x"
 		},
 		radius = 2.0,
 		scenarios = BedScenarios,
@@ -315,10 +322,10 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed10x',
-			'p_bed12x',
-			'p_bed13x',
-			'p_bed22x'
+			"p_bed10x",
+			"p_bed12x",
+			"p_bed13x",
+			"p_bed22x"
 		},
 		radius = 2.0,
 		scenarios = BedScenarios,
@@ -329,9 +336,9 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20x'
+			"p_bed20x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		scenarios = BedScenarios,
 		x = -0.3,
@@ -341,9 +348,9 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20x'
+			"p_bed20x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		scenarios = BedScenarios,
 		x = 0.3,
@@ -353,9 +360,9 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bedking02x'
+			"p_bedking02x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		scenarios = BedScenarios,
 		x = -0.5,
@@ -365,9 +372,9 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bedking02x'
+			"p_bedking02x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		scenarios = BedScenarios,
 		x = 0.5,
@@ -377,15 +384,15 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bedrollopen01x',
-			'p_bedrollopen03x',
-			'p_re_bedrollopen01x',
-			's_bedrollfurlined01x',
-			's_bedrollopen01x',
-			'p_amb_mattress04x',
-			'p_mattress04x',
-			'p_mattress07x',
-			'p_mattresscombined01x'
+			"p_bedrollopen01x",
+			"p_bedrollopen03x",
+			"p_re_bedrollopen01x",
+			"s_bedrollfurlined01x",
+			"s_bedrollopen01x",
+			"p_amb_mattress04x",
+			"p_mattress04x",
+			"p_mattress07x",
+			"p_mattresscombined01x"
 		},
 		radius = 1.5,
 		scenarios = BedScenarios,
@@ -396,9 +403,9 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_cs_ann_wrkr_bed01x',
-			'p_cs_roc_hse_bed',
-			'p_medbed01x'
+			"p_cs_ann_wrkr_bed01x",
+			"p_cs_roc_hse_bed",
+			"p_medbed01x"
 		},
 		radius = 2.0,
 		scenarios = BedScenarios,
@@ -409,9 +416,9 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_cs_bedsleptinbed08x'
+			"p_cs_bedsleptinbed08x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		scenarios = BedScenarios,
 		x = 0.3,
@@ -421,9 +428,9 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_cs_bedsleptinbed08x'
+			"p_cs_bedsleptinbed08x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		scenarios = BedScenarios,
 		x = 0.3,
@@ -439,7 +446,7 @@ Config.Interactions = {
 		y = 761.86,
 		z = 117.45099,
 		heading = 100.278,
-		effect = 'clean'
+		effect = "clean"
 	},
 	-- Saint Denis bath
 	{
@@ -449,7 +456,7 @@ Config.Interactions = {
 		y = -1223.7757,
 		z = 59.6699,
 		heading = 2.896,
-		effect = 'clean'
+		effect = "clean"
 	},
 	-- Strawberry bath
 	{
@@ -459,7 +466,7 @@ Config.Interactions = {
 		y = -373.23529,
 		z = 166.64999,
 		heading = 92.105,
-		effect = 'clean'
+		effect = "clean"
 	},
 	-- Annesburg bath
 	{
@@ -469,7 +476,7 @@ Config.Interactions = {
 		y = 1335.031494,
 		z = 44.496986,
 		heading = 154.996,
-		effect = 'clean'
+		effect = "clean"
 	},
 	-- Bronte mansion bath
 	{
@@ -479,11 +486,11 @@ Config.Interactions = {
 		y = -1211.780,
 		z = 51.888,
 		heading = 3.0,
-		effect = 'clean'
+		effect = "clean"
 	},
 	{
 		objects = {
-			'p_bath03x'
+			"p_bath03x"
 		},
 		radius = 2.0,
 		animations = BathingAnimations,
@@ -491,20 +498,20 @@ Config.Interactions = {
 		y = 0.0,
 		z = 0.65,
 		heading = 270.0,
-		effect = 'clean'
+		effect = "clean"
 	},
 	{
 		objects = {
-			'p_bed14x',
-			'p_bed17x',
-			'p_bed21x',
-			'p_bedbunk03x',
-			'p_bedindian02x',
-			'p_cot01x'
+			"p_bed14x",
+			"p_bed17x",
+			"p_bed21x",
+			"p_bedbunk03x",
+			"p_bedindian02x",
+			"p_cot01x"
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = -0.05,
 		y = 0.0,
@@ -513,16 +520,16 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed14x',
-			'p_bed17x',
-			'p_bed21x',
-			'p_bedbunk03x',
-			'p_bedindian02x',
-			'p_cot01x'
+			"p_bed14x",
+			"p_bed17x",
+			"p_bed21x",
+			"p_bedbunk03x",
+			"p_bedindian02x",
+			"p_cot01x"
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.0,
 		y = 0.0,
@@ -531,12 +538,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bedking02x'
+			"p_bedking02x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = -0.55,
 		y = 0.5,
@@ -545,12 +552,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bedking02x'
+			"p_bedking02x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = 0.45,
 		y = 0.5,
@@ -559,12 +566,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bedking02x'
+			"p_bedking02x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = -0.5,
 		y = 0.5,
@@ -573,12 +580,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bedking02x'
+			"p_bedking02x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.5,
 		y = 0.5,
@@ -587,12 +594,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_cs_bedsleptinbed08x'
+			"p_cs_bedsleptinbed08x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.0,
 		y = -0.3,
@@ -601,12 +608,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_cs_bedsleptinbed08x'
+			"p_cs_bedsleptinbed08x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.0,
 		y = 0.3,
@@ -615,12 +622,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_cs_bedsleptinbed08x'
+			"p_cs_bedsleptinbed08x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = 0.0,
 		y = -0.3,
@@ -629,12 +636,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_cs_bedsleptinbed08x'
+			"p_cs_bedsleptinbed08x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = 0.0,
 		y = 0.3,
@@ -643,14 +650,14 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20madex',
-			'p_cs_pro_bed_unmade',
-			'p_cs_bed20madex'
+			"p_bed20madex",
+			"p_cs_pro_bed_unmade",
+			"p_cs_bed20madex"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = -0.3,
 		y = 0.0,
@@ -659,14 +666,14 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20madex',
-			'p_cs_pro_bed_unmade',
-			'p_cs_bed20madex'
+			"p_bed20madex",
+			"p_cs_pro_bed_unmade",
+			"p_cs_bed20madex"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.3,
 		y = 0.0,
@@ -675,14 +682,14 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20madex',
-			'p_cs_pro_bed_unmade',
-			'p_cs_bed20madex'
+			"p_bed20madex",
+			"p_cs_pro_bed_unmade",
+			"p_cs_bed20madex"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = -0.35,
 		y = 0.0,
@@ -691,14 +698,14 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20madex',
-			'p_cs_pro_bed_unmade',
-			'p_cs_bed20madex'
+			"p_bed20madex",
+			"p_cs_pro_bed_unmade",
+			"p_cs_bed20madex"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = 0.25,
 		y = 0.0,
@@ -707,13 +714,13 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_cs_ann_wrkr_bed01x',
-			'p_cs_roc_hse_bed',
-			'p_medbed01x'
+			"p_cs_ann_wrkr_bed01x",
+			"p_cs_roc_hse_bed",
+			"p_medbed01x"
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = 0.0,
 		y = 0.0,
@@ -722,13 +729,13 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_cs_ann_wrkr_bed01x',
-			'p_cs_roc_hse_bed',
-			'p_medbed01x'
+			"p_cs_ann_wrkr_bed01x",
+			"p_cs_roc_hse_bed",
+			"p_medbed01x"
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.0,
 		y = 0.0,
@@ -737,19 +744,19 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bedrollopen01x',
-			'p_bedrollopen03x',
-			'p_re_bedrollopen01x',
-			's_bedrollfurlined01x',
-			's_bedrollopen01x',
-			'p_amb_mattress04x',
-			'p_mattress04x',
-			'p_mattress07x',
-			'p_mattresscombined01x'
+			"p_bedrollopen01x",
+			"p_bedrollopen03x",
+			"p_re_bedrollopen01x",
+			"s_bedrollfurlined01x",
+			"s_bedrollopen01x",
+			"p_amb_mattress04x",
+			"p_mattress04x",
+			"p_mattress07x",
+			"p_mattresscombined01x"
 		},
 		radius = 1.5,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = -0.1,
 		y = 0.0,
@@ -758,19 +765,19 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bedrollopen01x',
-			'p_bedrollopen03x',
-			'p_re_bedrollopen01x',
-			's_bedrollfurlined01x',
-			's_bedrollopen01x',
-			'p_amb_mattress04x',
-			'p_mattress04x',
-			'p_mattress07x',
-			'p_mattresscombined01x'
+			"p_bedrollopen01x",
+			"p_bedrollopen03x",
+			"p_re_bedrollopen01x",
+			"s_bedrollfurlined01x",
+			"s_bedrollopen01x",
+			"p_amb_mattress04x",
+			"p_mattress04x",
+			"p_mattress07x",
+			"p_mattresscombined01x"
 		},
 		radius = 1.5,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.0,
 		y = 0.0,
@@ -779,14 +786,14 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed10x',
-			'p_bed12x',
-			'p_bed13x',
-			'p_bed22x'
+			"p_bed10x",
+			"p_bed12x",
+			"p_bed13x",
+			"p_bed22x"
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.0,
 		y = 0.0,
@@ -795,14 +802,14 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed10x',
-			'p_bed12x',
-			'p_bed13x',
-			'p_bed22x'
+			"p_bed10x",
+			"p_bed12x",
+			"p_bed13x",
+			"p_bed22x"
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = 0.0,
 		y = 0.0,
@@ -811,12 +818,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20x'
+			"p_bed20x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = -0.3,
 		y = 0.0,
@@ -825,12 +832,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20x'
+			"p_bed20x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = 0.3,
 		y = 0.0,
@@ -839,12 +846,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20x'
+			"p_bed20x"
 		},
-		label = 'right',
+		label = "right",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = -0.3,
 		y = 0.0,
@@ -853,12 +860,12 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed20x'
+			"p_bed20x"
 		},
-		label = 'left',
+		label = "left",
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.3,
 		y = 0.0,
@@ -867,14 +874,14 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_ambbed01x',
-			'p_bed03x',
-			'p_bed09x',
-			'p_bedindian01x',
+			"p_ambbed01x",
+			"p_bed03x",
+			"p_bed09x",
+			"p_bedindian01x",
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.0,
 		y = 0.0,
@@ -883,14 +890,14 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_ambbed01x',
-			'p_bed03x',
-			'p_bed09x',
-			'p_bedindian01x',
+			"p_ambbed01x",
+			"p_bed03x",
+			"p_bed09x",
+			"p_bedindian01x",
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = 0.0,
 		y = -0.03,
@@ -899,11 +906,11 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed05x'
+			"p_bed05x"
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Top', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_female'}
+			{label = "Sex: Top", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_female"}
 		},
 		x = -0.075,
 		y = -0.3,
@@ -912,15 +919,15 @@ Config.Interactions = {
 	},
 	{
 		objects = {
-			'p_bed05x'
+			"p_bed05x"
 		},
 		radius = 2.0,
 		animations = {
-			{label = 'Sex: Bottom', dict = 'script_story@sal1@ig@sal1_18_lenny_on_lenny', name = 'loop_male'}
+			{label = "Sex: Bottom", dict = "script_story@sal1@ig@sal1_18_lenny_on_lenny", name = "loop_male"}
 		},
 		x = 0.0,
 		y = -0.3,
 		z = 1.5,
 		heading = 190.0
-	},
+	}
 }
