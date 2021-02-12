@@ -498,6 +498,16 @@ Config.Interactions = {
 		heading = -96.693,
 		effect = "clean"
 	},
+	-- Tumbleweed bath
+	{
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = -5513.196,
+		y = -2972.139,
+		z = -0.75,
+		heading = 108.131,
+		effect = "Clean"
+	},
 	{
 		objects = {
 			"p_bath03x"
