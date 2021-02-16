@@ -246,6 +246,10 @@ function StartInteraction()
 		})
 		SetInteractionMarker()
 		PickerIsOpen = false
+
+		if CurrentInteraction then
+			StopInteraction()
+		end
 	end
 end
 
