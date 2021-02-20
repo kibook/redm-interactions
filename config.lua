@@ -508,6 +508,16 @@ Config.Interactions = {
 		heading = 108.131,
 		effect = "clean"
 	},
+	-- Van Horn bath
+	{
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = 2987.698,
+		y = 573.760,
+		z = 47.920,
+		heading = 171.942,
+		effect = "clean"
+	},
 	{
 		objects = {
 			"p_bath03x"
