@@ -518,6 +518,16 @@ Config.Interactions = {
 		heading = 171.942,
 		effect = "clean"
 	},
+	-- Blackwater bath
+	{
+		radius = 2.0,
+		animations = BathingAnimations,
+		x = -823.362,
+		y = -1318.832,
+		z = 43.679,
+		heading = 92.793,
+		effect = "clean"
+	},
 	{
 		objects = {
 			"p_bath03x"
