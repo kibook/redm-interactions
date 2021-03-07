@@ -1,7 +1,7 @@
 Config = {}
 
 -- Control to start/stop interactions. Comment this out to disable the control.
-Config.InteractControl = `INPUT_DYNAMIC_SCENARIO` -- E
+Config.InteractControl = `INPUT_GAME_MENU_TAB_LEFT_SECONDARY` -- Z
 
 -- Interaction picker menu controls
 Config.MenuUpControl = `INPUT_GAME_MENU_UP`
