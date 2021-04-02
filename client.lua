@@ -3,6 +3,7 @@ local InteractionMarker
 local StartingCoords
 local CurrentInteraction
 local CanStartInteraction = true
+local MaxRadius = 0.0
 
 function DrawMarker(type, posX, posY, posZ, dirX, dirY, dirZ, rotX, rotY, rotZ, scaleX, scaleY, scaleZ, red, green, blue, alpha, bobUpAndDown, faceCamera, p19, rotate, textureDict, textureName, drawOnEnts)
 	Citizen.InvokeNative(0x2A32FAA57B937173, type, posX, posY, posZ, dirX, dirY, dirZ, rotX, rotY, rotZ, scaleX, scaleY, scaleZ, red, green, blue, alpha, bobUpAndDown, faceCamera, p19, rotate, textureDict, textureName, drawOnEnts)
@@ -12,41 +13,23 @@ function IsPedUsingScenarioHash(ped, scenarioHash)
 	return Citizen.InvokeNative(0x34D6AC1157C8226C, ped, scenarioHash)
 end
 
-local entityEnumerator = {
-	__gc = function(enum)
-		if enum.destructor and enum.handle then
-			enum.destructor(enum.handle)
+function GetNearbyObjects(coords)
+	local itemset = CreateItemset(true)
+	local size = Citizen.InvokeNative(0x59B57C4B06531E1E, coords, MaxRadius, itemset, 3, Citizen.ResultAsInteger())
+
+	local objects = {}
+
+	if size > 0 then
+		for i = 0, size - 1 do
+			table.insert(objects, GetIndexedItemInItemset(i, itemset))
 		end
-		enum.destructor = nil
-		enum.handle = nil
 	end
-}
 
-function EnumerateEntities(firstFunc, nextFunc, endFunc)
-	return coroutine.wrap(function()
-		local iter, id = firstFunc()
+	if IsItemsetValid(itemset) then
+		DestroyItemset(itemset)
+	end
 
-		if not id or id == 0 then
-			endFunc(iter)
-			return
-		end
-
-		local enum = {handle = iter, destructor = endFunc}
-		setmetatable(enum, entityEnumerator)
-
-		local next = true
-		repeat
-			coroutine.yield(id)
-			next, id = nextFunc(iter)
-		until not next
-
-		enum.destructor, enum.handle = nil, nil
-		endFunc(iter)
-	end)
-end
-
-function EnumerateObjects()
-	return EnumerateEntities(FindFirstObject, FindNextObject, EndFindObject)
+	return objects
 end
 
 function HasCompatibleModel(entity, models)
@@ -78,7 +61,7 @@ function PlayAnimation(ped, anim)
 	RequestAnimDict(anim.dict)
 
 	while not HasAnimDictLoaded(anim.dict) do
-		Wait(0)
+		Citizen.Wait(0)
 	end
 
 	TaskPlayAnim(ped, anim.dict, anim.name, 0.0, 0.0, -1, 1, 1.0, false, false, false, "", false)
@@ -205,7 +188,7 @@ function GetAvailableInteractions()
 	for _, interaction in ipairs(Config.Interactions) do
 		if IsCompatible(interaction) then
 			if interaction.objects then
-				for object in EnumerateObjects() do
+				for _, object in ipairs(GetNearbyObjects(playerCoords)) do
 					local objectCoords = GetEntityCoords(object)
 
 					local modelName = CanStartInteractionAtObject(interaction, object, playerCoords, objectCoords)
@@ -222,8 +205,6 @@ function GetAvailableInteractions()
 				end
 			end
 		end
-
-		Wait(0)
 	end
 
 	table.sort(availableInteractions, SortInteractions)
@@ -261,7 +242,7 @@ function StopInteraction()
 	ClearPedTasksImmediately(ped)
 	FreezeEntityPosition(ped, false)
 
-	Wait(100)
+	Citizen.Wait(100)
 
 	if StartingCoords then
 		SetEntityCoordsNoOffset(ped, StartingCoords.x, StartingCoords.y, StartingCoords.z)
@@ -310,7 +291,7 @@ RegisterNUICallback("stopInteraction", function(data, cb)
 end)
 
 RegisterNUICallback("setInteractionMarker", function(data, cb)
-	if (data.entity) then
+	if data.entity then
 		SetInteractionMarker(data.entity)
 	elseif data.x and data.y and data.z then
 		SetInteractionMarker(vector3(data.x, data.y, data.z))
@@ -324,15 +305,21 @@ RegisterCommand("interact", function(source, args, raw)
 	StartInteraction()
 end, false)
 
-CreateThread(function()
+Citizen.CreateThread(function()
+	for _, interaction in ipairs(Config.Interactions) do
+		MaxRadius = math.max(MaxRadius, interaction.radius)
+	end
+
 	while true do
 		local ped = PlayerPedId()
+
 		CanStartInteraction = not IsPedDeadOrDying(ped) and not IsPedInCombat(ped)
-		Wait(1000)
+
+		Citizen.Wait(1000)
 	end
 end)
 
-CreateThread(function()
+Citizen.CreateThread(function()
 	while true do
 		local playerPed = PlayerPedId()
 
@@ -378,6 +365,6 @@ CreateThread(function()
 			StartInteractionAtCoords(CurrentInteraction)
 		end
 
-		Wait(0)
+		Citizen.Wait(0)
 	end
 end)
