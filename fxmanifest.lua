@@ -12,6 +12,7 @@ files {
 ui_page "ui/index.html"
 
 client_scripts {
+	"@uiprompt/uiprompt.lua",
 	"common.lua",
 	"config.lua",
 	"client.lua"

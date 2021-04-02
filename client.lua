@@ -5,6 +5,8 @@ local CurrentInteraction
 local CanStartInteraction = true
 local MaxRadius = 0.0
 
+local InteractPrompt = Uiprompt:new(Config.InteractControl, "Select Interaction", nil, false)
+
 function DrawMarker(type, posX, posY, posZ, dirX, dirY, dirZ, rotX, rotY, rotZ, scaleX, scaleY, scaleZ, red, green, blue, alpha, bobUpAndDown, faceCamera, p19, rotate, textureDict, textureName, drawOnEnts)
 	Citizen.InvokeNative(0x2A32FAA57B937173, type, posX, posY, posZ, dirX, dirY, dirZ, rotX, rotY, rotZ, scaleX, scaleY, scaleZ, red, green, blue, alpha, bobUpAndDown, faceCamera, p19, rotate, textureDict, textureName, drawOnEnts)
 end
@@ -276,6 +278,34 @@ function IsPedUsingInteraction(ped, interaction)
 	end
 end
 
+function IsInteractionNearby(playerPed)
+	local playerCoords = GetEntityCoords(playerPed)
+
+	for _, interaction in ipairs(Config.Interactions) do
+		if IsCompatible(interaction) then
+			if interaction.objects then
+				for _, object in ipairs(GetNearbyObjects(playerCoords)) do
+					local objectCoords = GetEntityCoords(object)
+
+					local modelName = CanStartInteractionAtObject(interaction, object, playerCoords, objectCoords)
+
+					if modelName then
+						return true
+					end
+				end
+			else
+				local targetCoords = vector3(interaction.x, interaction.y, interaction.z)
+
+				if #(playerCoords - targetCoords) <= interaction.radius then
+					return true
+				end
+			end
+		end
+	end
+
+	return false
+end
+
 RegisterNUICallback("startInteraction", function(data, cb)
 	if data.object then
 		StartInteractionAtObject(data)
@@ -314,6 +344,16 @@ Citizen.CreateThread(function()
 		local ped = PlayerPedId()
 
 		CanStartInteraction = not IsPedDeadOrDying(ped) and not IsPedInCombat(ped)
+
+		if CanStartInteraction and IsInteractionNearby(ped) then
+			if not InteractPrompt:isEnabled() then
+				InteractPrompt:setEnabledAndVisible(true)
+			end
+		else
+			if InteractPrompt:isEnabled() then
+				InteractPrompt:setEnabledAndVisible(false)
+			end
+		end
 
 		Citizen.Wait(1000)
 	end
