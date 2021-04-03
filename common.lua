@@ -6,16 +6,20 @@ function IsPedAdult(ped)
 	return IsPedHuman(ped) and not IsPedChild(ped)
 end
 
-function IsPedFemale(ped)
-	return not IsPedMale(ped)
+function IsPedHumanMale(ped)
+	return IsPedHuman(ped) and IsPedMale(ped)
+end
+
+function IsPedHumanFemale(ped)
+	return IsPedHuman(ped) and not IsPedMale(ped)
 end
 
 function IsPedAdultMale(ped)
-	return IsPedAdult(ped) and IsPedMale(ped)
+	return not IsPedChild(ped) and IsPedMale(ped)
 end
 
 function IsPedAdultFemale(ped)
-	return IsPedAdult(ped) and not IsPedMale(ped)
+	return not IsPedChild(ped) and not IsPedMale(ped)
 end
 
 GenericChairs = {
@@ -193,7 +197,7 @@ GenericBenches = {
 
 GenericChairAndBenchScenarios = {
 	{name = "GENERIC_SEAT_BENCH_SCENARIO"},
-	{name = "GENERIC_SEAT_CHAIR_SCENARIO", isCompatible = PlayerPedIsMale},
+	{name = "GENERIC_SEAT_CHAIR_SCENARIO", isCompatible = IsPedHumanMale},
 	{name = "GENERIC_SEAT_CHAIR_TABLE_SCENARIO"},
 	{name = "MP_LOBBY_PROP_HUMAN_SEAT_BENCH_PORCH_DRINKING"},
 	{name = "MP_LOBBY_PROP_HUMAN_SEAT_BENCH_PORCH_SMOKING"},
@@ -202,29 +206,29 @@ GenericChairAndBenchScenarios = {
 	{name = "MP_LOBBY_PROP_HUMAN_SEAT_CHAIR_WHITTLE"},
 	{name = "PROP_CAMP_FIRE_SEAT_CHAIR"},
 	{name = "PROP_HUMAN_CAMP_FIRE_SEAT_BOX"},
-	{name = "PROP_HUMAN_SEAT_BENCH_CONCERTINA", isCompatible = PlayerPedIsMale},
-	{name = "PROP_HUMAN_SEAT_BENCH_FIDDLE", isCompatible = PlayerPedIsFemale},
-	{name = "PROP_HUMAN_SEAT_BENCH_JAW_HARP", isCompatible = PlayerPedIsMale},
-	{name = "PROP_HUMAN_SEAT_BENCH_MANDOLIN", isCompatible = PlayerPedIsMale},
+	{name = "PROP_HUMAN_SEAT_BENCH_CONCERTINA", isCompatible = IsPedHumanMale},
+	{name = "PROP_HUMAN_SEAT_BENCH_FIDDLE", isCompatible = IsPedHumanFemale},
+	{name = "PROP_HUMAN_SEAT_BENCH_JAW_HARP", isCompatible = IsPedHumanMale},
+	{name = "PROP_HUMAN_SEAT_BENCH_MANDOLIN", isCompatible = IsPedHumanMale},
 	{name = "PROP_HUMAN_SEAT_CHAIR"},
-	{name = "PROP_HUMAN_SEAT_CHAIR_BANJO", isCompatible = PlayerPedIsMale},
+	{name = "PROP_HUMAN_SEAT_CHAIR_BANJO", isCompatible = IsPedHumanMale},
 	{name = "PROP_HUMAN_SEAT_CHAIR_CLEAN_RIFLE"},
 	{name = "PROP_HUMAN_SEAT_CHAIR_CLEAN_SADDLE"},
-	{name = "PROP_HUMAN_SEAT_CHAIR_CRAB_TRAP", isCompatible = PlayerPedIsMale},
-	{name = "PROP_HUMAN_SEAT_CHAIR_CIGAR", isCompatible = PlayerPedIsMale},
-	{name = "PROP_HUMAN_SEAT_CHAIR_GROOMING_GROSS", isCompatible = PlayerPedIsMale},
-	{name = "PROP_HUMAN_SEAT_CHAIR_GROOMING_POSH", isCompatible = PlayerPedIsFemale},
-	{name = "PROP_HUMAN_SEAT_CHAIR_GUITAR", isCompatible = PlayerPedIsMale},
-	{name = "PROP_HUMAN_SEAT_CHAIR_KNIFE_BADASS", isCompatible = PlayerPedIsMale},
-	{name = "PROP_HUMAN_SEAT_CHAIR_KNITTING", isCompatible = PlayerPedIsFemale},
+	{name = "PROP_HUMAN_SEAT_CHAIR_CRAB_TRAP", isCompatible = IsPedHumanMale},
+	{name = "PROP_HUMAN_SEAT_CHAIR_CIGAR", isCompatible = IsPedHumanMale},
+	{name = "PROP_HUMAN_SEAT_CHAIR_GROOMING_GROSS", isCompatible = IsPedHumanMale},
+	{name = "PROP_HUMAN_SEAT_CHAIR_GROOMING_POSH", isCompatible = IsPedHumanFemale},
+	{name = "PROP_HUMAN_SEAT_CHAIR_GUITAR", isCompatible = IsPedHumanMale},
+	{name = "PROP_HUMAN_SEAT_CHAIR_KNIFE_BADASS", isCompatible = IsPedHumanMale},
+	{name = "PROP_HUMAN_SEAT_CHAIR_KNITTING", isCompatible = IsPedHumanFemale},
 	{name = "PROP_HUMAN_SEAT_CHAIR_PORCH"},
-	{name = "PROP_HUMAN_SEAT_CHAIR_READING", isCompatible = PlayerPedIsFemale},
+	{name = "PROP_HUMAN_SEAT_CHAIR_READING", isCompatible = IsPedHumanFemale},
 	{name = "PROP_HUMAN_SEAT_CHAIR_TABLE_DRINKING"}
 }
 
 BedScenarios = {
 	{name = "PROP_HUMAN_SLEEP_BED_PILLOW"},
-	{name = "PROP_HUMAN_SLEEP_BED_PILLOW_HIGH", isCompatible = PlayerPedIsMale},
+	{name = "PROP_HUMAN_SLEEP_BED_PILLOW_HIGH", isCompatible = IsPedHumanMale},
 	{name = "WORLD_HUMAN_SLEEP_GROUND_ARM"},
 	{name = "WORLD_HUMAN_SLEEP_GROUND_PILLOW"},
 	{name = "WORLD_HUMAN_SIT_FALL_ASLEEP"},

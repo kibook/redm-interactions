@@ -31,8 +31,8 @@ Config.Interactions = {
 		objects = {"p_piano03x"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedHumanMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedHumanFemale}
 		},
 		x = 0.0,
 		y = -0.70,
@@ -44,8 +44,8 @@ Config.Interactions = {
 		objects = {"p_piano02x"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedHumanMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedHumanFemale}
 		},
 		x = 0.0,
 		y = -0.70,
@@ -57,8 +57,8 @@ Config.Interactions = {
 		objects = {"p_nbxpiano01x"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedHumanMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedHumanFemale}
 		},
 		x = -0.1,
 		y = -0.75,
@@ -70,8 +70,8 @@ Config.Interactions = {
 		objects = {"p_nbmpiano01x"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedHumanMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedHumanFemale}
 		},
 		x = 0.0,
 		y = -0.77,
@@ -82,8 +82,8 @@ Config.Interactions = {
 		objects = {"sha_man_piano01"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedHumanMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedHumanFemale}
 		},
 		x = 0.0,
 		y = -0.75,
@@ -139,7 +139,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = IsPedMale,
+		isCompatible = IsPedHumanMale,
 		objects = GenericChairs,
 		radius = 1.5,
 		scenarios = {
@@ -529,6 +529,7 @@ Config.Interactions = {
 		effect = "clean"
 	},
 	{
+		isCompatible = IsPedHuman,
 		objects = {
 			"p_bath03x"
 		},
