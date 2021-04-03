@@ -2,32 +2,20 @@ function IsPedChild(ped)
 	return Citizen.InvokeNative(0x137772000DAF42C5, ped)
 end
 
-function PlayerPedIsHuman()
-	return IsPedHuman(PlayerPedId())
+function IsPedAdult(ped)
+	return IsPedHuman(ped) and not IsPedChild(ped)
 end
 
-function PlayerPedIsAdult()
-	return not IsPedChild(PlayerPedId())
+function IsPedFemale(ped)
+	return not IsPedMale(ped)
 end
 
-function PlayerPedIsChild()
-	return IsPedChild(PlayerPedId())
+function IsPedAdultMale(ped)
+	return IsPedAdult(ped) and IsPedMale(ped)
 end
 
-function PlayerPedIsMale()
-	return IsPedMale(PlayerPedId())
-end
-
-function PlayerPedIsFemale()
-	return not IsPedMale(PlayerPedId())
-end
-
-function PlayerPedIsAdultMale()
-	return PlayerPedIsAdult() and PlayerPedIsMale()
-end
-
-function PlayerPedIsAdultFemale()
-	return PlayerPedIsAdult() and PlayerPedIsFemale()
+function IsPedAdultFemale(ped)
+	return IsPedAdult(ped) and not IsPedMale(ped)
 end
 
 GenericChairs = {

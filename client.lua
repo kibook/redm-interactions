@@ -123,8 +123,8 @@ function StartInteractionAtObject(interaction)
 	StartInteractionAtCoords(interaction)
 end
 
-function IsCompatible(t)
-	return not t.isCompatible or t.isCompatible()
+function IsCompatible(t, ped)
+	return not t.isCompatible or t.isCompatible(ped)
 end
 
 function SortInteractions(a, b)
@@ -141,12 +141,12 @@ function SortInteractions(a, b)
 	end
 end
 
-function AddInteractions(availableInteractions, interaction, playerCoords, targetCoords, modelName, object)
+function AddInteractions(availableInteractions, interaction, playerPed, playerCoords, targetCoords, modelName, object)
 	local distance = #(playerCoords - targetCoords)
 
 	if interaction.scenarios then
 		for _, scenario in ipairs(interaction.scenarios) do
-			if IsCompatible(scenario) then
+			if IsCompatible(scenario, playerPed) then
 				table.insert(availableInteractions, {
 					x = interaction.x,
 					y = interaction.y,
@@ -165,7 +165,7 @@ function AddInteractions(availableInteractions, interaction, playerCoords, targe
 
 	if interaction.animations then
 		for _, animation in ipairs(interaction.animations) do
-			if IsCompatible(animation) then
+			if IsCompatible(animation, playerPed) then
 				table.insert(availableInteractions, {
 					x = interaction.x,
 					y = interaction.y,
@@ -184,11 +184,12 @@ function AddInteractions(availableInteractions, interaction, playerCoords, targe
 end
 
 function GetAvailableInteractions()
-	local playerCoords = GetEntityCoords(PlayerPedId())
+	local playerPed = PlayerPedId()
+	local playerCoords = GetEntityCoords(playerPed)
 	local availableInteractions = {}
 
 	for _, interaction in ipairs(Config.Interactions) do
-		if IsCompatible(interaction) then
+		if IsCompatible(interaction, playerPed) then
 			if interaction.objects then
 				for _, object in ipairs(GetNearbyObjects(playerCoords)) do
 					local objectCoords = GetEntityCoords(object)
@@ -196,14 +197,14 @@ function GetAvailableInteractions()
 					local modelName = CanStartInteractionAtObject(interaction, object, playerCoords, objectCoords)
 
 					if modelName then
-						AddInteractions(availableInteractions, interaction, playerCoords, objectCoords, modelName, object)
+						AddInteractions(availableInteractions, interaction, playerPed, playerCoords, objectCoords, modelName, object)
 					end
 				end
 			else
 				local targetCoords = vector3(interaction.x, interaction.y, interaction.z)
 
 				if #(playerCoords - targetCoords) <= interaction.radius then
-					AddInteractions(availableInteractions, interaction, playerCoords, targetCoords)
+					AddInteractions(availableInteractions, interaction, playerPed, playerCoords, targetCoords)
 				end
 			end
 		end
@@ -282,7 +283,7 @@ function IsInteractionNearby(playerPed)
 	local playerCoords = GetEntityCoords(playerPed)
 
 	for _, interaction in ipairs(Config.Interactions) do
-		if IsCompatible(interaction) then
+		if IsCompatible(interaction, playerPed) then
 			if interaction.objects then
 				for _, object in ipairs(GetNearbyObjects(playerCoords)) do
 					local objectCoords = GetEntityCoords(object)

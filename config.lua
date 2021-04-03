@@ -27,12 +27,12 @@ Config.Effects = {
 Config.Interactions = {
 	-- Pianos
 	{
-		isCompatible = PlayerPedIsHuman,
+		isCompatible = IsPedHuman,
 		objects = {"p_piano03x"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
 		},
 		x = 0.0,
 		y = -0.70,
@@ -40,12 +40,12 @@ Config.Interactions = {
 		heading = 0.0
 	},
 	{
-		isCompatible = PlayerPedIsHuman,
+		isCompatible = IsPedHuman,
 		objects = {"p_piano02x"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
 		},
 		x = 0.0,
 		y = -0.70,
@@ -53,12 +53,12 @@ Config.Interactions = {
 		heading = 0.0
 	},
 	{
-		isCompatible = PlayerPedIsHuman,
+		isCompatible = IsPedHuman,
 		objects = {"p_nbxpiano01x"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
 		},
 		x = -0.1,
 		y = -0.75,
@@ -66,12 +66,12 @@ Config.Interactions = {
 		heading = 0.0
 	},
 	{
-		isCompatible = PlayerPedIsHuman,
+		isCompatible = IsPedHuman,
 		objects = {"p_nbmpiano01x"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
 		},
 		x = 0.0,
 		y = -0.77,
@@ -82,8 +82,8 @@ Config.Interactions = {
 		objects = {"sha_man_piano01"},
 		radius = 2.0,
 		scenarios = {
-			{name = "PROP_HUMAN_PIANO", isCompatible = PlayerPedIsMale},
-			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = PlayerPedIsFemale}
+			{name = "PROP_HUMAN_PIANO", isCompatible = IsPedMale},
+			{name = "PROP_HUMAN_ABIGAIL_PIANO", isCompatible = IsPedFemale}
 		},
 		x = 0.0,
 		y = -0.75,
@@ -91,7 +91,7 @@ Config.Interactions = {
 		heading = 0.0
 	},
 	{
-		isCompatible = PlayerPedIsAdult,
+		isCompatible = IsPedAdult,
 		objects = GenericChairs,
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
@@ -101,7 +101,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsAdult,
+		isCompatible = IsPedAdult,
 		objects = GenericChairs,
 		radius = 1.5,
 		scenarios = {
@@ -113,7 +113,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsAdult,
+		isCompatible = IsPedAdult,
 		objects = GenericBenches,
 		radius = 1.5,
 		scenarios = {
@@ -126,7 +126,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsAdult,
+		isCompatible = IsPedAdult,
 		objects = GenericBenches,
 		radius = 1.5,
 		scenarios = {
@@ -139,7 +139,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsMale,
+		isCompatible = IsPedMale,
 		objects = GenericChairs,
 		radius = 1.5,
 		scenarios = {
@@ -151,7 +151,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsAdultFemale,
+		isCompatible = IsPedAdultFemale,
 		objects = GenericChairs,
 		radius = 1.5,
 		scenarios = {
@@ -163,7 +163,7 @@ Config.Interactions = {
 		heading = 240.0
 	},
 	{
-		isCompatible = PlayerPedIsAdult,
+		isCompatible = IsPedAdult,
 		objects = {"p_chairrusticsav01x"},
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
@@ -173,7 +173,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsAdult,
+		isCompatible = IsPedAdult,
 		objects = {"p_chairtall01x"},
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
@@ -183,7 +183,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsHuman,
+		isCompatible = IsPedHuman,
 		objects = {"p_barstool01x"},
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
@@ -193,7 +193,7 @@ Config.Interactions = {
 		heading = 0.0
 	},
 	{
-		isCompatible = PlayerPedIsChild,
+		isCompatible = IsPedChild,
 		objects = GenericChairs,
 		radius = 1.5,
 		scenarios = GenericChairAndBenchScenarios,
@@ -203,7 +203,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsHuman,
+		isCompatible = IsPedHuman,
 		objects = GenericBenches,
 		label = "right",
 		radius = 2.0,
@@ -214,7 +214,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsHuman,
+		isCompatible = IsPedHuman,
 		objects = GenericBenches,
 		label = "left",
 		radius = 2.0,
@@ -225,7 +225,7 @@ Config.Interactions = {
 		heading = 180.0
 	},
 	{
-		isCompatible = PlayerPedIsHuman,
+		isCompatible = IsPedHuman,
 		objects = {
 			"p_bench17x",
 			"p_benchbear01x"
